@@ -65,8 +65,8 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=Oswald:wght@400;500;600;700&family=Noto+Sans+Arabic:wght@400;700&family=Noto+Sans+JP:wght@400;700&family=Noto+Sans+KR:wght@400;700&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="style.css?v=20261016-hero-shade-2">
-    <script src="main.js" defer></script>
+    <link rel="stylesheet" href="style.css?v=20261017-carousel-controls">
+    <script src="main.js?v=20261017-carousel-controls" defer></script>
 </head>
 
 <body
@@ -267,7 +267,8 @@
 
         <!-- Hero Section (SpartanRef Style) -->
         <header
-            class="min-h-screen overflow-hidden group w-full relative bg-white dark:bg-neutral-900 border-b border-black/10 dark:border-white/10 flex flex-col justify-center">
+            class="hero-carousel about-hero overflow-hidden group relative bg-white dark:bg-neutral-900 border-b border-black/10 dark:border-white/10 flex flex-col justify-center"
+            aria-roledescription="carousel" aria-label="About Pioneer Metal">
             <!-- Carousel Slides -->
             <div class="carousel-slide active opacity-100 pointer-events-auto absolute inset-0 w-full h-full bg-cover bg-center transition-opacity duration-1000"
                 style="background-image: url('https://raw.githubusercontent.com/pioneer-metal/pioneer-metal.github.io/refs/heads/main/resources/AboutUs_01.jpg'); filter: brightness(0.6) contrast(1.1);">
@@ -297,25 +298,25 @@
             </div>
 
             <!-- Custom Navigation Arrows -->
-            <button type="button" aria-label="Previous image" onclick="plusSlides(-1)"
-                class="absolute left-6 top-1/2 -translate-y-1/2 bg-black/5 dark:bg-white/10 hover:bg-white/20 border border-black/20 dark:border-white/20 text-neutral-900 dark:text-white w-12 h-12 rounded-full flex items-center justify-center transition-all backdrop-blur-md z-20 hover:scale-105">
-                <i class="fa-solid fa-chevron-left text-sm"></i>
+            <button type="button" class="carousel-arrow carousel-arrow--previous" data-carousel-step="-1"
+                aria-label="Previous image">
+                <i class="fa-solid fa-chevron-left" aria-hidden="true"></i>
             </button>
-            <button type="button" aria-label="Next image" onclick="plusSlides(1)"
-                class="absolute right-6 top-1/2 -translate-y-1/2 bg-black/5 dark:bg-white/10 hover:bg-white/20 border border-black/20 dark:border-white/20 text-neutral-900 dark:text-white w-12 h-12 rounded-full flex items-center justify-center transition-all backdrop-blur-md z-20 hover:scale-105">
-                <i class="fa-solid fa-chevron-right text-sm"></i>
+            <button type="button" class="carousel-arrow carousel-arrow--next" data-carousel-step="1"
+                aria-label="Next image">
+                <i class="fa-solid fa-chevron-right" aria-hidden="true"></i>
             </button>
 
             <!-- Dots -->
-            <div class="absolute inset-x-0 bottom-10 z-[30] flex justify-center space-x-2">
-                <button type="button" class="dot active w-1.5 h-1.5 bg-white rounded-full cursor-pointer transition-colors"
-                    aria-label="Show image 1" aria-pressed="true" onclick="currentSlide(1)"></button>
-                <button type="button" class="dot w-1.5 h-1.5 bg-black/5 dark:bg-white/50 rounded-full cursor-pointer hover:bg-white transition-colors"
-                    aria-label="Show image 2" aria-pressed="false" onclick="currentSlide(2)"></button>
-                <button type="button" class="dot w-1.5 h-1.5 bg-black/5 dark:bg-white/50 rounded-full cursor-pointer hover:bg-white transition-colors"
-                    aria-label="Show image 3" aria-pressed="false" onclick="currentSlide(3)"></button>
-                <button type="button" class="dot w-1.5 h-1.5 bg-black/5 dark:bg-white/50 rounded-full cursor-pointer hover:bg-white transition-colors"
-                    aria-label="Show image 4" aria-pressed="false" onclick="currentSlide(4)"></button>
+            <div class="carousel-pagination" role="group" aria-label="Choose image">
+                <button type="button" class="dot active" data-carousel-to="0" aria-label="Show image 1"
+                    aria-pressed="true"></button>
+                <button type="button" class="dot" data-carousel-to="1" aria-label="Show image 2"
+                    aria-pressed="false"></button>
+                <button type="button" class="dot" data-carousel-to="2" aria-label="Show image 3"
+                    aria-pressed="false"></button>
+                <button type="button" class="dot" data-carousel-to="3" aria-label="Show image 4"
+                    aria-pressed="false"></button>
             </div>
         </header>
 

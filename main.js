@@ -696,40 +696,52 @@ document.addEventListener('DOMContentLoaded', () => {
             .forEach(el => scrollObserver.observe(el));
     }
 
-    // One controller owns the home and About page carousels and their controls.
-    let currentSlide = 0;
-    const slides = document.querySelectorAll('.carousel-slide');
-    const dots = document.querySelectorAll('.dot');
-    let slideTimer;
-
-    window.goToSlide = function (index) {
+    // Each hero carousel owns its slides, controls, and rotation timer.
+    document.querySelectorAll('.hero-carousel').forEach(carousel => {
+        const slides = Array.from(carousel.querySelectorAll('.carousel-slide'));
+        const dots = Array.from(carousel.querySelectorAll('.dot'));
         if (slides.length === 0) return;
-        currentSlide = (index + slides.length) % slides.length;
-        slides.forEach((s, i) => {
-            const isActive = i === currentSlide;
-            s.classList.toggle('active', isActive);
-            s.classList.toggle('opacity-100', isActive);
-            s.classList.toggle('opacity-0', !isActive);
-            s.classList.toggle('pointer-events-none', !isActive);
-            s.classList.toggle('pointer-events-auto', isActive);
-        });
-        dots.forEach((dot, i) => {
-            const isActive = i === currentSlide;
-            dot.classList.toggle('active', isActive);
-            dot.classList.toggle('bg-white', isActive);
-            dot.classList.toggle('bg-white/50', !isActive);
-            dot.setAttribute('aria-pressed', String(isActive));
+
+        let activeIndex = Math.max(0, slides.findIndex(slide => slide.classList.contains('active')));
+        let slideTimer;
+
+        const goToSlide = index => {
+            activeIndex = (index + slides.length) % slides.length;
+            slides.forEach((slide, slideIndex) => {
+                const isActive = slideIndex === activeIndex;
+                slide.classList.toggle('active', isActive);
+                slide.classList.toggle('opacity-100', isActive);
+                slide.classList.toggle('opacity-0', !isActive);
+                slide.classList.toggle('pointer-events-none', !isActive);
+                slide.classList.toggle('pointer-events-auto', isActive);
+                slide.setAttribute('aria-hidden', String(!isActive));
+            });
+
+            dots.forEach((dot, dotIndex) => {
+                const isActive = dotIndex === activeIndex;
+                dot.classList.toggle('active', isActive);
+                dot.setAttribute('aria-pressed', String(isActive));
+            });
+
+            window.clearTimeout(slideTimer);
+            if (slides.length > 1) {
+                slideTimer = window.setTimeout(() => goToSlide(activeIndex + 1), 5000);
+            }
+        };
+
+        carousel.querySelectorAll('[data-carousel-step]').forEach(button => {
+            button.addEventListener('click', () => {
+                goToSlide(activeIndex + Number(button.dataset.carouselStep));
+            });
         });
 
-        if (slideTimer) window.clearTimeout(slideTimer);
-        if (slides.length > 1) {
-            slideTimer = window.setTimeout(() => window.goToSlide(currentSlide + 1), 5000);
-        }
-    };
+        dots.forEach((dot, index) => {
+            const targetIndex = Number(dot.dataset.carouselTo ?? index);
+            dot.addEventListener('click', () => goToSlide(targetIndex));
+        });
 
-    window.plusSlides = amount => window.goToSlide(currentSlide + amount);
-    window.currentSlide = index => window.goToSlide(index - 1);
-    if (slides.length > 0) window.goToSlide(0);
+        goToSlide(activeIndex);
+    });
 
     // 2. Count Up implementation
     const counterElements = document.querySelectorAll('.count-up');

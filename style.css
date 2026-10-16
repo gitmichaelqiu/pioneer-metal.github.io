@@ -227,6 +227,21 @@ html.dark .leaflet-popup-content-wrapper {
 }
 
 /* Carousel */
+.hero-carousel {
+    position: relative;
+    isolation: isolate;
+    width: 100%;
+    height: 100vh;
+    min-height: 100vh;
+}
+
+@supports (height: 100svh) {
+    .hero-carousel {
+        height: 100svh;
+        min-height: 100svh;
+    }
+}
+
 .carousel-container {
     position: absolute;
     inset: 0;
@@ -258,20 +273,108 @@ html.dark .leaflet-popup-content-wrapper {
 }
 
 .dot {
+    display: grid;
+    width: 32px;
+    height: 32px;
+    place-items: center;
+    border: 0;
+    padding: 0;
+    background: transparent;
+    cursor: pointer;
+}
+
+.dot::before {
+    content: "";
     width: 8px;
     height: 8px;
     border-radius: 50%;
-    background: rgba(255, 255, 255, 0.3);
-    cursor: pointer;
-    border: 0;
-    padding: 0;
-    transition: background-color 0.3s, transform 0.3s;
+    background: rgba(255, 255, 255, 0.55);
+    transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
 }
 
-.dot.active {
+.dot.active::before {
     background: var(--pioneer-accent);
     transform: scale(1.4);
     box-shadow: 0 0 10px rgba(219, 32, 21, 0.5);
+}
+
+.dot:hover::before {
+    background: #fff;
+}
+
+.dot.active:hover::before {
+    background: var(--pioneer-accent);
+}
+
+.carousel-arrow {
+    position: absolute;
+    top: 50%;
+    z-index: 30;
+    display: grid;
+    width: 48px;
+    height: 48px;
+    place-items: center;
+    transform: translateY(-50%);
+    border: 1px solid rgba(255, 255, 255, 0.88);
+    border-radius: 9999px;
+    background: rgba(255, 255, 255, 0.9);
+    color: #171717;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.24);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    cursor: pointer;
+    transition: background-color 220ms ease, color 220ms ease, border-color 220ms ease, box-shadow 220ms ease;
+}
+
+.carousel-arrow--previous {
+    left: clamp(16px, 4vw, 48px);
+}
+
+.carousel-arrow--next {
+    right: clamp(16px, 4vw, 48px);
+}
+
+.carousel-arrow:hover,
+.carousel-arrow:focus-visible {
+    border-color: var(--pioneer-accent);
+    background: var(--pioneer-accent);
+    color: #fff;
+    box-shadow: 0 0 0 4px rgba(219, 32, 21, 0.22), 0 8px 24px rgba(0, 0, 0, 0.28);
+}
+
+.carousel-arrow:focus-visible,
+.dot:focus-visible {
+    outline: 3px solid #fff;
+    outline-offset: 3px;
+}
+
+.carousel-pagination {
+    position: absolute;
+    z-index: 30;
+    right: 0;
+    bottom: 40px;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+}
+
+@media (max-width: 640px) {
+    .carousel-arrow {
+        width: 44px;
+        height: 44px;
+    }
+
+    .carousel-pagination {
+        bottom: 24px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .carousel-arrow,
+    .dot::before {
+        transition: none;
+    }
 }
 
 /* Shared card surface and interaction used across every page. */
