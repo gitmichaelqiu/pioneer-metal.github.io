@@ -437,7 +437,7 @@ const i18nData = {
 };
 
 const flags = { en: 'us', es: 'es', pt: 'pt', ru: 'ru', ja: 'jp', ko: 'kr', ar: 'sa', fr: 'fr', sq: 'al', sr: 'rs' };
-const langLabels = { en: 'English', es: 'Español', pt: 'Português', ru: 'Русский', ja: '日本語', ko: '한국어', ar: 'العربية', fr: 'Français', sq: 'Shqip', sr: 'Srpski' };
+const langLabels = { en: 'EN', es: 'ES', pt: 'PT', ru: 'RU', ja: 'JA', ko: 'KO', ar: 'AR', fr: 'FR', sq: 'SQ', sr: 'SR' };
 
 // --- 2. Shared Functions ---
 /**
@@ -458,6 +458,8 @@ function getTranslation(key) {
  * @param {string} lang - The language code (e.g., 'en', 'ar')
  */
 function changeLanguage(lang) {
+    if (!i18nData[lang]) return;
+
     document.documentElement.dir = (lang === 'ar') ? 'rtl' : 'ltr';
     document.documentElement.lang = lang;
 
@@ -491,6 +493,7 @@ function changeLanguage(lang) {
 
     // Save Preference
     localStorage.setItem('preferred-lang', lang);
+    syncLanguageOptionStates(lang);
 
     // Close dropdown if open
     closeLangDropdown();
@@ -505,8 +508,11 @@ function toggleLangDropdown(e) {
     const chevron = document.getElementById('langChevron');
     if (dropdown) {
         dropdown.classList.toggle('active');
+        const isOpen = dropdown.classList.contains('active');
+        const button = document.querySelector('[aria-controls="langDropdown"]');
+        if (button) button.setAttribute('aria-expanded', String(isOpen));
         if (chevron) {
-            chevron.style.transform = dropdown.classList.contains('active') ? 'rotate(180deg)' : 'rotate(0deg)';
+            chevron.style.transform = isOpen ? 'rotate(180deg)' : 'rotate(0deg)';
         }
     }
 }
@@ -518,7 +524,46 @@ function closeLangDropdown() {
     const dropdown = document.getElementById('langDropdown');
     const chevron = document.getElementById('langChevron');
     if (dropdown) dropdown.classList.remove('active');
+    const button = document.querySelector('[aria-controls="langDropdown"]');
+    if (button) button.setAttribute('aria-expanded', 'false');
     if (chevron) chevron.style.transform = 'rotate(0deg)';
+}
+
+function getLanguageCode(button) {
+    if (button.dataset.language) return button.dataset.language;
+    const match = button.getAttribute('onclick')?.match(/changeLanguage\(\s*['"]([a-z]{2})['"]/i);
+    return match ? match[1].toLowerCase() : null;
+}
+
+function syncLanguageOptionStates(activeLanguage = document.documentElement.lang || 'en') {
+    document.querySelectorAll('#langDropdown button, [data-mobile-language-options] button').forEach(button => {
+        const lang = getLanguageCode(button);
+        if (!lang) return;
+        button.dataset.language = lang;
+        button.setAttribute('aria-pressed', String(lang === activeLanguage));
+    });
+}
+
+function initializeMobileLanguageOptions() {
+    const container = document.querySelector('[data-mobile-language-options]');
+    if (!container) return;
+
+    const availableLanguages = new Set(
+        Array.from(container.querySelectorAll('button')).map(getLanguageCode).filter(Boolean)
+    );
+
+    Object.keys(i18nData).forEach(lang => {
+        if (availableLanguages.has(lang)) return;
+
+        const option = document.createElement('button');
+        option.type = 'button';
+        option.dataset.language = lang;
+        option.textContent = langLabels[lang];
+        option.addEventListener('click', () => changeLanguage(lang));
+        container.appendChild(option);
+    });
+
+    syncLanguageOptionStates();
 }
 
 /**
@@ -526,9 +571,34 @@ function closeLangDropdown() {
  */
 function toggleMobileMenu() {
     const menu = document.getElementById('mobile-menu');
-    if (menu) {
-        menu.classList.toggle('hidden');
-        menu.classList.toggle('flex');
+    if (!menu) return;
+    setMobileMenuOpen(menu.classList.contains('hidden'));
+}
+
+function setMobileMenuOpen(isOpen) {
+    const menu = document.getElementById('mobile-menu');
+    const toggle = document.querySelector('[aria-controls="mobile-menu"]');
+    if (!menu) return;
+
+    menu.classList.toggle('hidden', !isOpen);
+    menu.classList.toggle('flex', isOpen);
+    menu.setAttribute('aria-hidden', String(!isOpen));
+    document.body.classList.toggle('overflow-hidden', isOpen);
+    if (toggle) {
+        toggle.setAttribute('aria-expanded', String(isOpen));
+        toggle.setAttribute('aria-label', isOpen ? 'Close navigation' : 'Open navigation');
+    }
+    Array.from(menu.parentElement.children).forEach(sibling => {
+        if (sibling !== menu) sibling.inert = isOpen;
+    });
+
+    if (isOpen) {
+        menu.querySelector('button, a[href]')?.focus();
+    } else {
+        const focusTarget = window.matchMedia('(max-width: 1023px)').matches
+            ? toggle
+            : document.querySelector('nav a[href="index.html"]');
+        focusTarget?.focus();
     }
 }
 
@@ -564,72 +634,111 @@ if (savedLang !== 'en') {
 
 document.addEventListener('DOMContentLoaded', () => {
     // 2. Load Language (Fallback sweep)
+    initializeMobileLanguageOptions();
     changeLanguage(savedLang);
 
 
     // 3. Bind Global Click to close dropdowns
     document.body.addEventListener('click', closeLangDropdown);
+
+    document.querySelectorAll('#mobile-menu a').forEach(link => {
+        link.addEventListener('click', () => setMobileMenuOpen(false));
+    });
+
+    document.addEventListener('keydown', event => {
+        const menu = document.getElementById('mobile-menu');
+        const isOpen = menu && !menu.classList.contains('hidden');
+        if (!isOpen) return;
+
+        if (event.key === 'Escape') {
+            event.preventDefault();
+            setMobileMenuOpen(false);
+            return;
+        }
+
+        if (event.key !== 'Tab') return;
+        const focusable = Array.from(menu.querySelectorAll('a[href], button:not([disabled])'));
+        if (focusable.length === 0) return;
+
+        const activeIndex = focusable.indexOf(document.activeElement);
+        if (event.shiftKey && activeIndex <= 0) {
+            event.preventDefault();
+            focusable[focusable.length - 1].focus();
+        } else if (!event.shiftKey && (activeIndex === focusable.length - 1 || activeIndex === -1)) {
+            event.preventDefault();
+            focusable[0].focus();
+        }
+    });
+
+    window.addEventListener('resize', () => {
+        const menu = document.getElementById('mobile-menu');
+        if (menu && !menu.classList.contains('hidden') && window.matchMedia('(min-width: 1024px)').matches) {
+            setMobileMenuOpen(false);
+        }
+    });
 });
 
 // Initialization of modern design effects
 document.addEventListener('DOMContentLoaded', () => {
-    // 1. Scroll Fade-Ins using IntersectionObserver
-    const observerOptions = {
-        root: null,
-        rootMargin: '0px',
-        threshold: 0.1
-    };
+    // Reveal effects are opt-in so content stays visible if scripts or browser APIs fail.
+    if ('IntersectionObserver' in window) {
+        document.documentElement.classList.add('motion-enabled');
+        const scrollObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { root: null, rootMargin: '0px', threshold: 0.1 });
 
-    const scrollObserver = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('is-visible');
-            }
-        });
-    }, observerOptions);
+        document.querySelectorAll('.fade-in-up, .fade-in-section, .fade-in-group')
+            .forEach(el => scrollObserver.observe(el));
+    }
 
-    const animatedElements = document.querySelectorAll('.fade-in-up, .fade-in-section, .fade-in-group');
-    animatedElements.forEach(el => scrollObserver.observe(el));
-
-    // Carousel Implementation
+    // One controller owns the home and About page carousels and their controls.
     let currentSlide = 0;
     const slides = document.querySelectorAll('.carousel-slide');
     const dots = document.querySelectorAll('.dot');
+    let slideTimer;
 
     window.goToSlide = function (index) {
         if (slides.length === 0) return;
-        currentSlide = index;
+        currentSlide = (index + slides.length) % slides.length;
         slides.forEach((s, i) => {
-            if (i === index) {
-                s.classList.add('opacity-100');
-                s.classList.remove('opacity-0', 'pointer-events-none');
-            } else {
-                s.classList.remove('opacity-100');
-                s.classList.add('opacity-0', 'pointer-events-none');
-            }
+            const isActive = i === currentSlide;
+            s.classList.toggle('active', isActive);
+            s.classList.toggle('opacity-100', isActive);
+            s.classList.toggle('opacity-0', !isActive);
+            s.classList.toggle('pointer-events-none', !isActive);
+            s.classList.toggle('pointer-events-auto', isActive);
         });
-        dots.forEach((d, i) => d.classList.toggle('active', i === index));
-        dots.forEach((d, i) => d.classList.toggle('bg-white', i === index));
-        dots.forEach((d, i) => d.classList.toggle('bg-white/50', i !== index));
+        dots.forEach((dot, i) => {
+            const isActive = i === currentSlide;
+            dot.classList.toggle('active', isActive);
+            dot.classList.toggle('bg-white', isActive);
+            dot.classList.toggle('bg-white/50', !isActive);
+            dot.setAttribute('aria-pressed', String(isActive));
+        });
+
+        if (slideTimer) window.clearTimeout(slideTimer);
+        if (slides.length > 1) {
+            slideTimer = window.setTimeout(() => window.goToSlide(currentSlide + 1), 5000);
+        }
     };
 
-    if (slides.length > 0) {
-        window.goToSlide(0);
-        setInterval(() => {
-            currentSlide = (currentSlide + 1) % slides.length;
-            window.goToSlide(currentSlide);
-        }, 5000);
-    }
+    window.plusSlides = amount => window.goToSlide(currentSlide + amount);
+    window.currentSlide = index => window.goToSlide(index - 1);
+    if (slides.length > 0) window.goToSlide(0);
 
     // 2. Count Up implementation
     const counterElements = document.querySelectorAll('.count-up');
-    let hasCounted = new Set();
-
-    const easeOutQuad = t => t * (2 - t);
-
-    const countUpObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting && !hasCounted.has(entry.target)) {
+    if ('IntersectionObserver' in window && counterElements.length > 0) {
+        const hasCounted = new Set();
+        const easeOutQuad = t => t * (2 - t);
+        const countUpObserver = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (!entry.isIntersecting || hasCounted.has(entry.target)) return;
                 hasCounted.add(entry.target);
                 const targetStr = entry.target.getAttribute('data-target');
                 if (!targetStr) return;
@@ -637,24 +746,22 @@ document.addEventListener('DOMContentLoaded', () => {
                 const duration = 2000;
                 let startTime = null;
 
-                const step = (currentTime) => {
+                const step = currentTime => {
                     if (!startTime) startTime = currentTime;
                     const progress = Math.min((currentTime - startTime) / duration, 1);
-                    const currentVal = Math.floor(easeOutQuad(progress) * target);
-                    entry.target.innerHTML = currentVal.toLocaleString();
-
+                    entry.target.textContent = Math.floor(easeOutQuad(progress) * target).toLocaleString();
                     if (progress < 1) {
                         window.requestAnimationFrame(step);
                     } else {
-                        entry.target.innerHTML = target.toLocaleString();
+                        entry.target.textContent = target.toLocaleString();
                     }
                 };
                 window.requestAnimationFrame(step);
-            }
-        });
-    }, { threshold: 0.5 });
+            });
+        }, { threshold: 0.5 });
 
-    counterElements.forEach(el => countUpObserver.observe(el));
+        counterElements.forEach(el => countUpObserver.observe(el));
+    }
 });
 
 /**
