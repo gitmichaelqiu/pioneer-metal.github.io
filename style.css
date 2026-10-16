@@ -254,9 +254,7 @@ html.dark .leaflet-popup-content-wrapper {
     inset: 0;
     z-index: 2;
     pointer-events: none;
-    background:
-        linear-gradient(to right, rgba(0, 0, 0, 0.18), transparent),
-        rgba(0, 0, 0, 0.32);
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.44), rgba(0, 0, 0, 0.32));
 }
 
 .dot {
