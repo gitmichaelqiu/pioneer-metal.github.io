@@ -271,82 +271,53 @@ html.dark .leaflet-popup-content-wrapper {
     box-shadow: 0 0 10px rgba(219, 32, 21, 0.5);
 }
 
-/* Unified Glass Card (from ref) */
-.glass-card {
-    background: rgba(255, 255, 255, 0.6);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    border: 1px solid rgba(0, 0, 0, 0.1);
-    box-shadow: 0 8px 24px -16px rgba(15, 23, 42, 0.2);
-    transition:
-        transform 0.7s cubic-bezier(0.16, 1, 0.3, 1),
-        box-shadow 0.7s cubic-bezier(0.16, 1, 0.3, 1),
-        background-color 0.5s ease,
-        border-color 0.5s ease;
-    will-change: transform, box-shadow;
+/* Shared card surface and interaction used across every page. */
+.glass-card,
+.glass-card-dark {
+    --card-surface: #fafafa;
+    --card-border: rgba(15, 23, 42, 0.08);
+    --card-hover-border: rgba(219, 32, 21, 0.45);
+    --card-shadow: 0 1px 2px rgba(15, 23, 42, 0.07), 0 14px 28px -12px rgba(15, 23, 42, 0.24);
+    --card-hover-shadow: 0 4px 10px -5px rgba(15, 23, 42, 0.12), 0 20px 34px -12px rgba(15, 23, 42, 0.32);
     position: relative;
     overflow: hidden;
+    border: 1px solid var(--card-border);
+    border-radius: 0;
+    background-color: var(--card-surface);
+    box-shadow: var(--card-shadow);
+    transition:
+        transform 450ms cubic-bezier(0.22, 0.61, 0.36, 1),
+        box-shadow 450ms cubic-bezier(0.22, 0.61, 0.36, 1),
+        background-color 250ms ease,
+        border-color 250ms ease;
 }
 
 .dark .glass-card,
 .glass-card-dark {
-    background: rgba(20, 20, 20, 0.3);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    box-shadow: 0 8px 24px -16px rgba(219, 32, 21, 0.16);
-    transition:
-        transform 0.7s cubic-bezier(0.16, 1, 0.3, 1),
-        box-shadow 0.7s cubic-bezier(0.16, 1, 0.3, 1),
-        background-color 0.5s ease,
-        border-color 0.5s ease;
-    will-change: transform, box-shadow;
-    position: relative;
-    overflow: hidden;
+    --card-surface: #151515;
+    --card-border: rgba(255, 255, 255, 0.1);
+    --card-hover-border: rgba(219, 32, 21, 0.55);
+    --card-shadow: 0 1px 0 rgba(255, 255, 255, 0.04), 0 12px 24px -12px rgba(255, 255, 255, 0.12), 0 12px 24px -14px rgba(0, 0, 0, 0.6);
+    --card-hover-shadow: 0 1px 0 rgba(255, 255, 255, 0.06), 0 18px 30px -12px rgba(255, 255, 255, 0.16), 0 20px 34px -14px rgba(0, 0, 0, 0.72);
 }
 
-.glass-card:hover {
-    border-color: var(--pioneer-accent);
-    background: rgba(219, 32, 21, 0.1);
-    transform: translateY(-8px) scale(1.01);
-    box-shadow: 0 22px 40px -18px rgba(15, 23, 42, 0.28);
-    z-index: 20;
-}
-
-.dark .glass-card:hover,
+.glass-card:hover,
 .glass-card-dark:hover {
-    border-color: var(--pioneer-accent);
-    background: rgba(219, 32, 21, 0.05);
-    transform: translateY(-8px) scale(1.01);
-    box-shadow: 0 20px 36px -18px rgba(219, 32, 21, 0.18);
+    border-color: var(--card-hover-border);
+    box-shadow: var(--card-hover-shadow);
     z-index: 20;
 }
 
-.card-corner-glow {
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 300px;
-    height: 300px;
-    background: radial-gradient(circle at 100% 0%, rgba(219, 32, 21, 0.18) 0%, transparent 70%);
-    opacity: 0;
-    transition: opacity 0.6s ease;
-    pointer-events: none;
-    z-index: 0;
-}
-
-.group:hover .card-corner-glow {
-    opacity: 1;
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+    .glass-card:hover,
+    .glass-card-dark:hover {
+        transform: translateY(-6px);
+    }
 }
 
 .card-content {
     position: relative;
     z-index: 10;
-}
-
-/* Products Specific - unified */
-.product-card {
-    transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .product-image {
@@ -443,20 +414,29 @@ html.dark .leaflet-popup-content-wrapper {
     transition-delay: 400ms;
 }
 
-.motion-enabled .fade-in-group>.glass-card {
-    transition-property: opacity, translate, transform, box-shadow, background-color, border-color;
-    transition-duration: 0.8s, 0.8s, 0.7s, 0.7s, 0.5s, 0.5s;
-    transition-timing-function:
-        cubic-bezier(0.16, 1, 0.3, 1),
-        cubic-bezier(0.16, 1, 0.3, 1),
-        cubic-bezier(0.16, 1, 0.3, 1),
-        cubic-bezier(0.16, 1, 0.3, 1),
-        ease,
-        ease;
+.motion-enabled .fade-in-group>.glass-card,
+.motion-enabled .fade-in-group>.glass-card-dark {
+    transition:
+        opacity 800ms cubic-bezier(0.16, 1, 0.3, 1),
+        translate 800ms cubic-bezier(0.16, 1, 0.3, 1),
+        transform 450ms cubic-bezier(0.22, 0.61, 0.36, 1),
+        box-shadow 450ms cubic-bezier(0.22, 0.61, 0.36, 1),
+        background-color 250ms ease,
+        border-color 250ms ease;
 }
 
-.motion-enabled .fade-in-group.is-visible>.glass-card:hover {
+.motion-enabled .fade-in-group.is-visible>.glass-card:hover,
+.motion-enabled .fade-in-group.is-visible>.glass-card-dark:hover {
     transition-delay: 0s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .glass-card,
+    .glass-card-dark,
+    .motion-enabled .fade-in-group>.glass-card,
+    .motion-enabled .fade-in-group>.glass-card-dark {
+        transition-duration: 0.01ms;
+    }
 }
 
 @keyframes marquee {
