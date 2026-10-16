@@ -243,6 +243,17 @@ html.dark .leaflet-popup-content-wrapper {
     background-position: center;
 }
 
+.home-hero .carousel-slide {
+    transform: scale(1);
+    transition: opacity 1.2s ease-in-out, transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+    .home-hero:hover .carousel-slide.active {
+        transform: scale(1.035);
+    }
+}
+
 .carousel-slide.active {
     opacity: 1;
     z-index: 1;
@@ -251,7 +262,17 @@ html.dark .leaflet-popup-content-wrapper {
 .slide-overlay {
     position: absolute;
     inset: 0;
-    background: linear-gradient(to right, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.2));
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.42), rgba(0, 0, 0, 0.1));
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .home-hero .carousel-slide {
+        transition: opacity 1.2s ease-in-out;
+    }
+
+    .home-hero:hover .carousel-slide.active {
+        transform: none;
+    }
 }
 
 .dot {
