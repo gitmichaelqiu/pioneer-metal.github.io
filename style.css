@@ -277,6 +277,7 @@ html.dark .leaflet-popup-content-wrapper {
     --card-surface: #fafafa;
     --card-border: rgba(15, 23, 42, 0.08);
     --card-hover-border: rgba(219, 32, 21, 0.45);
+    --card-glow-opacity: 0.18;
     --card-shadow: 0 1px 2px rgba(15, 23, 42, 0.07), 0 14px 28px -12px rgba(15, 23, 42, 0.24);
     --card-hover-shadow: 0 4px 10px -5px rgba(15, 23, 42, 0.12), 0 20px 34px -12px rgba(15, 23, 42, 0.32);
     position: relative;
@@ -297,8 +298,24 @@ html.dark .leaflet-popup-content-wrapper {
     --card-surface: #151515;
     --card-border: rgba(255, 255, 255, 0.1);
     --card-hover-border: rgba(219, 32, 21, 0.55);
+    --card-glow-opacity: 0.24;
     --card-shadow: 0 1px 0 rgba(255, 255, 255, 0.04), 0 12px 24px -12px rgba(255, 255, 255, 0.12), 0 12px 24px -14px rgba(0, 0, 0, 0.6);
     --card-hover-shadow: 0 1px 0 rgba(255, 255, 255, 0.06), 0 18px 30px -12px rgba(255, 255, 255, 0.16), 0 20px 34px -14px rgba(0, 0, 0, 0.72);
+}
+
+.glass-card::before,
+.glass-card-dark::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: min(300px, 80%);
+    aspect-ratio: 1;
+    background: radial-gradient(circle at 100% 0%, rgba(219, 32, 21, var(--card-glow-opacity)) 0%, transparent 70%);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 450ms ease;
+    z-index: 0;
 }
 
 .glass-card:hover,
@@ -306,6 +323,11 @@ html.dark .leaflet-popup-content-wrapper {
     border-color: var(--card-hover-border);
     box-shadow: var(--card-hover-shadow);
     z-index: 20;
+}
+
+.glass-card:hover::before,
+.glass-card-dark:hover::before {
+    opacity: 1;
 }
 
 @media (hover: hover) and (prefers-reduced-motion: no-preference) {
@@ -433,6 +455,8 @@ html.dark .leaflet-popup-content-wrapper {
 @media (prefers-reduced-motion: reduce) {
     .glass-card,
     .glass-card-dark,
+    .glass-card::before,
+    .glass-card-dark::before,
     .motion-enabled .fade-in-group>.glass-card,
     .motion-enabled .fade-in-group>.glass-card-dark {
         transition-duration: 0.01ms;
