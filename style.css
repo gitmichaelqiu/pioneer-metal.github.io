@@ -255,8 +255,8 @@ html.dark .leaflet-popup-content-wrapper {
     z-index: 2;
     pointer-events: none;
     background:
-        linear-gradient(to right, rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.04)),
-        rgba(0, 0, 0, 0.22);
+        linear-gradient(to right, rgba(0, 0, 0, 0.18), transparent),
+        rgba(0, 0, 0, 0.32);
 }
 
 .dot {
