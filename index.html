@@ -65,8 +65,8 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=Oswald:wght@400;500;600;700&family=Noto+Sans+Arabic:wght@400;700&family=Noto+Sans+JP:wght@400;700&family=Noto+Sans+KR:wght@400;700&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="style.css?v=20261017-carousel-controls">
-    <script src="main.js?v=20261017-carousel-controls" defer></script>
+    <link rel="stylesheet" href="style.css?v=20261017-shared-carousel-slides">
+    <script src="main.js?v=20261017-shared-carousel-slides" defer></script>
 </head>
 
 <body
@@ -264,18 +264,10 @@
             class="hero-carousel home-hero overflow-hidden group relative bg-neutral-900"
             aria-roledescription="carousel" aria-label="Pioneer Metal highlights">
             <!-- Carousel Slides -->
-            <div class="carousel-slide active opacity-100 absolute inset-0 w-full h-full bg-cover bg-center transition-opacity duration-1000"
-                style="background-image: url('https://raw.githubusercontent.com/pioneer-metal/pioneer-metal.github.io/refs/heads/main/resources/Home_01.jpg');">
-            </div>
-            <div class="carousel-slide opacity-0 pointer-events-none absolute inset-0 w-full h-full bg-cover bg-center transition-opacity duration-1000"
-                style="background-image: url('https://raw.githubusercontent.com/pioneer-metal/pioneer-metal.github.io/refs/heads/main/resources/Home_02.jpg');">
-            </div>
-            <div class="carousel-slide opacity-0 pointer-events-none absolute inset-0 w-full h-full bg-cover bg-center transition-opacity duration-1000"
-                style="background-image: url('https://raw.githubusercontent.com/pioneer-metal/pioneer-metal.github.io/refs/heads/main/resources/Home_03.jpg');">
-            </div>
-            <div class="carousel-slide opacity-0 pointer-events-none absolute inset-0 w-full h-full bg-cover bg-center transition-opacity duration-1000"
-                style="background-image: url('https://raw.githubusercontent.com/pioneer-metal/pioneer-metal.github.io/refs/heads/main/resources/Home_04.jpg');">
-            </div>
+            <div class="carousel-slide carousel-slide--1 active" aria-hidden="false"></div>
+            <div class="carousel-slide carousel-slide--2" aria-hidden="true"></div>
+            <div class="carousel-slide carousel-slide--3" aria-hidden="true"></div>
+            <div class="carousel-slide carousel-slide--4" aria-hidden="true"></div>
 
             <!-- Hero Content -->
             <div

@@ -710,10 +710,6 @@ document.addEventListener('DOMContentLoaded', () => {
             slides.forEach((slide, slideIndex) => {
                 const isActive = slideIndex === activeIndex;
                 slide.classList.toggle('active', isActive);
-                slide.classList.toggle('opacity-100', isActive);
-                slide.classList.toggle('opacity-0', !isActive);
-                slide.classList.toggle('pointer-events-none', !isActive);
-                slide.classList.toggle('pointer-events-auto', isActive);
                 slide.setAttribute('aria-hidden', String(!isActive));
             });
 
