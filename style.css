@@ -248,10 +248,15 @@ html.dark .leaflet-popup-content-wrapper {
     z-index: 1;
 }
 
-.slide-overlay {
+.home-hero::before {
+    content: "";
     position: absolute;
     inset: 0;
-    background: linear-gradient(to right, rgba(0, 0, 0, 0.42), rgba(0, 0, 0, 0.1));
+    z-index: 2;
+    pointer-events: none;
+    background:
+        linear-gradient(to right, rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.04)),
+        rgba(0, 0, 0, 0.22);
 }
 
 .dot {
