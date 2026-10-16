@@ -66,7 +66,7 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=Oswald:wght@400;500;600;700&family=Noto+Sans+Arabic:wght@400;700&family=Noto+Sans+JP:wght@400;700&family=Noto+Sans+KR:wght@400;700&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="style.css?v=20261017-hero-contrast">
+    <link rel="stylesheet" href="style.css?v=20261017-theme-gallery-fixes">
 
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script src="main.js?v=20261017-shared-carousel-slides" defer></script>
@@ -272,7 +272,7 @@
         <header
             class="pt-48 pb-24 bg-white dark:bg-neutral-900 border-b border-black/10 dark:border-white/10 relative overflow-hidden flex flex-col justify-center min-h-[50vh]">
             <div
-                class="absolute inset-0 bg-gradient-to-t from-white/80 dark:from-white/80 dark:from-neutral-950 to-transparent">
+                class="absolute inset-0 bg-gradient-to-t from-white/80 dark:from-neutral-950/90 to-transparent">
             </div>
 
             <!-- Phone Shape Background Effect -->
@@ -294,7 +294,7 @@
                 </div>
                 <h1 class="text-5xl md:text-8xl font-black uppercase tracking-tighter mb-6 leading-[0.9] text-neutral-900 dark:text-white fade-in-up delay-100 font-oswald text-outline"
                     data-i18n="contact-header">Let's connect</h1>
-                <p class="text-neutral-600 dark:text-neutral-600 dark:text-white/60 mx-auto text-lg md:text-xl font-light leading-relaxed max-w-2xl fade-in-up delay-200"
+                <p class="text-neutral-600 dark:text-white/60 mx-auto text-lg md:text-xl font-light leading-relaxed max-w-2xl fade-in-up delay-200"
                     data-i18n="contact-subheader">Ready to discuss your next project? Reach out to our global sales team
                     today.</p>
             </div>
@@ -350,7 +350,7 @@
                         </div>
 
                         <button type="submit"
-                            class="w-full bg-white text-black py-4 rounded-none font-bold text-sm tracking-widest hover:bg-neutral-200 transition-all duration-300 flex items-center justify-center gap-3 group mt-12 shadow-lg hover:shadow-xl uppercase">
+                            class="contact-submit w-full py-4 rounded-none font-bold text-sm tracking-widest transition-all duration-300 flex items-center justify-center gap-3 group mt-12 shadow-lg hover:shadow-xl uppercase">
                             <span data-i18n="form-btn">SEND INQUIRY</span>
                             <i data-lucide="send"
                                 class="w-4 h-4 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1"></i>
@@ -363,9 +363,8 @@
                     <div class="grid sm:grid-cols-2 gap-6">
                         <div onclick="copyTextToClipboard('+86 136 5671 4278', this)"
                             class="glass-card p-10 group min-h-[360px] cursor-pointer flex flex-col items-center justify-center text-center">
-                            <div
-                                class="text-red-500 mb-6 group-hover:scale-110 group-hover:text-neutral-900 dark:group-hover:text-white transition-all duration-500 drop-shadow-sm relative z-10">
-                                <i data-lucide="phone" class="w-16 h-16"></i>
+                            <div class="contact-icon-badge relative z-10">
+                                <i data-lucide="phone" class="w-9 h-9"></i>
                             </div>
                             <h4 class="text-3xl font-black mb-4 tracking-tighter uppercase font-oswald text-neutral-900 dark:text-white group-hover:text-red-500 transition-colors leading-none relative z-10"
                                 data-i18n="contact-phone">Phone Support</h4>
@@ -376,9 +375,8 @@
 
                         <div onclick="copyTextToClipboard('pioneermetal@163.com', this)"
                             class="glass-card p-10 group min-h-[360px] cursor-pointer flex flex-col items-center justify-center text-center">
-                            <div
-                                class="text-red-500 mb-6 group-hover:scale-110 group-hover:text-neutral-900 dark:group-hover:text-white transition-all duration-500 drop-shadow-sm relative z-10">
-                                <i data-lucide="mail" class="w-16 h-16"></i>
+                            <div class="contact-icon-badge relative z-10">
+                                <i data-lucide="mail" class="w-9 h-9"></i>
                             </div>
                             <h4 class="text-3xl font-black mb-4 tracking-tighter uppercase font-oswald text-neutral-900 dark:text-white group-hover:text-red-500 transition-colors leading-none relative z-10"
                                 data-i18n="contact-email">Email Inquiries</h4>
@@ -539,7 +537,7 @@
                 } else {
                     feedback.classList.remove('opacity-100');
                     feedback.classList.add('opacity-0');
-                    input.style.borderBottomColor = 'rgba(255,255,255,0.2)';
+                    input.style.removeProperty('border-bottom-color');
                 }
             });
         }
@@ -572,14 +570,12 @@
             const originalContent = btn.innerHTML;
             btn.innerHTML = `<i data-lucide="check" class="w-4 h-4"></i> <span>${getTranslation('form-redirecting')}</span>`;
             lucide.createIcons();
-            btn.classList.replace('bg-white', 'bg-green-600');
-            btn.classList.replace('text-black', 'text-white');
+            btn.classList.add('is-success');
 
             setTimeout(() => {
                 btn.innerHTML = originalContent;
                 lucide.createIcons();
-                btn.classList.replace('bg-green-600', 'bg-white');
-                btn.classList.replace('text-white', 'text-black');
+                btn.classList.remove('is-success');
                 this.reset();
             }, 3000);
         });

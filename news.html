@@ -65,7 +65,7 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=Oswald:wght@400;500;600;700&family=Noto+Sans+Arabic:wght@400;700&family=Noto+Sans+JP:wght@400;700&family=Noto+Sans+KR:wght@400;700&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="style.css?v=20261017-hero-contrast">
+    <link rel="stylesheet" href="style.css?v=20261017-theme-gallery-fixes">
     <script src="main.js?v=20261017-shared-carousel-slides" defer></script>
 </head>
 
@@ -290,7 +290,7 @@
                 </div>
                 <h1 class="text-5xl md:text-8xl font-black uppercase tracking-tighter mb-6 leading-[0.9] text-neutral-900 dark:text-white fade-in-up delay-100 font-oswald text-outline"
                     data-i18n="news-header">Latest Insights</h1>
-                <p class="text-neutral-600 dark:text-neutral-600 dark:text-white/60 mx-auto text-lg md:text-xl font-light leading-relaxed max-w-2xl fade-in-up delay-200"
+                <p class="text-neutral-600 dark:text-white/60 mx-auto text-lg md:text-xl font-light leading-relaxed max-w-2xl fade-in-up delay-200"
                     data-i18n="news-subheader">Stay updated with Pioneer Metal's industrial advancements and global
                     exhibition highlights.</p>
             </div>
@@ -302,13 +302,13 @@
 
                     <!-- News 1 -->
                     <article
-                        class="glass-card flex flex-col md:flex-row group cursor-default">
+                        class="gallery-card glass-card flex flex-col md:flex-row group cursor-default">
                         <div class="md:w-[45%] relative h-[400px] md:h-auto overflow-hidden card-content">
                             <img src="https://raw.githubusercontent.com/pioneer-metal/pioneer-metal.github.io/refs/heads/main/resources/News_01.jpg"
                                 alt="German Exhibition"
-                                class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 grayscale-0 dark:grayscale dark:group-hover:grayscale-0">
+                                class="gallery-image w-full h-full object-cover">
                             <div
-                                class="absolute inset-0 bg-red-600/5 dark:bg-neutral-950/40 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center backdrop-blur-[2px]">
+                                class="gallery-overlay absolute inset-0 flex items-center justify-center">
                             </div>
                             <div class="absolute top-6 left-6 bg-red-900/60 backdrop-blur-md text-red-50 text-[10px] font-bold border border-red-500/50 px-6 py-2 rounded-full tracking-widest uppercase shadow-xl"
                                 data-i18n="tag-event">Global Event</div>
@@ -319,13 +319,13 @@
                                 <span
                                     class="font-black text-4xl text-black/15 dark:text-white/20 group-hover:text-red-500 transition-colors font-oswald">01</span>
                                 <time
-                                    class="text-neutral-600 dark:text-neutral-600 dark:text-white/60 text-xs font-bold uppercase tracking-widest"
+                                    class="text-neutral-600 dark:text-white/60 text-xs font-bold uppercase tracking-widest"
                                     data-i18n="news1-date">MAR 24-27, 2026</time>
                             </div>
 
                             <h2 class="text-4xl md:text-6xl font-black mb-6 uppercase tracking-tighter leading-[0.9] text-neutral-900 dark:text-white font-oswald group-hover:text-red-500 transition-colors duration-300"
                                 data-i18n="news1-t">FENSTERBAU<br>FRONTALE</h2>
-                            <p class="text-neutral-600 dark:text-neutral-600 dark:text-white/60 text-lg leading-relaxed mb-10 font-light"
+                            <p class="text-neutral-600 dark:text-white/60 text-lg leading-relaxed mb-10 font-light"
                                 data-i18n="news1-d">
                                 Join Pioneer Metal at FENSTERBAU FRONTALE in Nuremberg, Germany. Explore our
                                 cutting-edge
@@ -350,14 +350,14 @@
 
                     <!-- News 2 -->
                     <article
-                        class="glass-card flex flex-col md:flex-row group cursor-default">
+                        class="gallery-card glass-card flex flex-col md:flex-row group cursor-default">
                         <div
                             class="md:w-[45%] relative h-[400px] md:h-auto overflow-hidden card-content order-1 md:order-2">
                             <img src="https://raw.githubusercontent.com/pioneer-metal/pioneer-metal.github.io/refs/heads/main/resources/News_02.jpg"
                                 alt="Brazil Exhibition"
-                                class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 grayscale-0 dark:grayscale dark:group-hover:grayscale-0">
+                                class="gallery-image w-full h-full object-cover">
                             <div
-                                class="absolute inset-0 bg-red-600/5 dark:bg-neutral-950/40 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center backdrop-blur-[2px]">
+                                class="gallery-overlay absolute inset-0 flex items-center justify-center">
                             </div>
                             <div class="absolute top-6 right-6 bg-red-900/60 backdrop-blur-md text-red-50 text-[10px] font-bold border border-red-500/50 px-6 py-2 rounded-full tracking-widest uppercase shadow-xl"
                                 data-i18n="tag-event">Global Event</div>
@@ -368,13 +368,13 @@
                                 <span
                                     class="font-black text-4xl text-black/15 dark:text-white/20 group-hover:text-red-500 transition-colors font-oswald">02</span>
                                 <time
-                                    class="text-neutral-600 dark:text-neutral-600 dark:text-white/60 text-xs font-bold uppercase tracking-widest"
+                                    class="text-neutral-600 dark:text-white/60 text-xs font-bold uppercase tracking-widest"
                                     data-i18n="news2-date">SEP 9-12, 2026</time>
                             </div>
 
                             <h2 class="text-4xl md:text-6xl font-black mb-6 uppercase tracking-tighter leading-[0.9] text-neutral-900 dark:text-white font-oswald group-hover:text-red-500 transition-colors duration-300"
                                 data-i18n="news2-t">FESQUA<br>BRAZIL 2026</h2>
-                            <p class="text-neutral-600 dark:text-neutral-600 dark:text-white/60 text-lg leading-relaxed mb-10 font-light"
+                            <p class="text-neutral-600 dark:text-white/60 text-lg leading-relaxed mb-10 font-light"
                                 data-i18n="news2-d">
                                 Expanding our reach in South America! Pioneer Metal will showcase high-performance
                                 cold-rolled steel technologies at FESQUA, São Paulo.

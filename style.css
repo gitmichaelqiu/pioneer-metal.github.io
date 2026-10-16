@@ -353,15 +353,24 @@ html.dark .leaflet-popup-content-wrapper {
     height: 48px;
     place-items: center;
     transform: translateY(-50%);
-    border: 1px solid rgba(255, 255, 255, 0.88);
+    border: 1px solid rgba(255, 255, 255, 0.32);
     border-radius: 9999px;
-    background: rgba(255, 255, 255, 0.9);
-    color: #171717;
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.24);
+    background: rgba(17, 17, 17, 0.34);
+    color: rgba(255, 255, 255, 0.78);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.16);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     cursor: pointer;
-    transition: background-color 220ms ease, color 220ms ease, border-color 220ms ease, box-shadow 220ms ease;
+    opacity: 0.5;
+    transition: opacity 220ms ease, background-color 220ms ease, color 220ms ease, border-color 220ms ease, box-shadow 220ms ease;
+}
+
+.carousel-arrow:focus-visible {
+    opacity: 1;
+}
+
+.carousel-arrow:hover {
+    opacity: 1;
 }
 
 .carousel-arrow--previous {
@@ -378,6 +387,12 @@ html.dark .leaflet-popup-content-wrapper {
     background: var(--pioneer-accent);
     color: #fff;
     box-shadow: 0 0 0 4px rgba(219, 32, 21, 0.22), 0 8px 24px rgba(0, 0, 0, 0.28);
+}
+
+@media (hover: none) {
+    .carousel-arrow {
+        opacity: 0.72;
+    }
 }
 
 .carousel-arrow:focus-visible,
@@ -491,6 +506,100 @@ html.dark .leaflet-popup-content-wrapper {
     object-fit: cover;
     width: 100%;
     background-color: #f1f5f9;
+}
+
+/* Shared image hover treatment for the site galleries. */
+.gallery-image {
+    display: block;
+    filter: grayscale(1);
+    transition: filter 700ms cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+.gallery-card:hover .gallery-image,
+.gallery-card:focus-within .gallery-image {
+    filter: grayscale(0);
+}
+
+.gallery-overlay {
+    background-color: rgba(219, 32, 21, 0.14);
+    opacity: 0;
+    transition: opacity 700ms cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+.gallery-card:hover .gallery-overlay,
+.gallery-card:focus-within .gallery-overlay {
+    opacity: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .gallery-image,
+    .gallery-overlay {
+        transition-duration: 0.01ms;
+    }
+}
+
+/* Contact details use an accent badge that adapts to both page themes. */
+.contact-icon-badge {
+    display: grid;
+    width: 5.5rem;
+    height: 5.5rem;
+    place-items: center;
+    margin-bottom: 1.5rem;
+    border: 1px solid rgba(219, 32, 21, 0.18);
+    border-radius: 9999px;
+    background: rgba(219, 32, 21, 0.07);
+    color: var(--pioneer-accent);
+    transition: transform 450ms cubic-bezier(0.22, 0.61, 0.36, 1), background-color 250ms ease, border-color 250ms ease, color 250ms ease;
+}
+
+.dark .contact-icon-badge {
+    border-color: rgba(219, 32, 21, 0.3);
+    background: rgba(219, 32, 21, 0.14);
+}
+
+.glass-card:hover .contact-icon-badge {
+    transform: scale(1.06);
+    border-color: rgba(219, 32, 21, 0.42);
+    background: rgba(219, 32, 21, 0.12);
+}
+
+.dark .glass-card:hover .contact-icon-badge {
+    border-color: rgba(219, 32, 21, 0.48);
+    background: rgba(219, 32, 21, 0.2);
+}
+
+.contact-submit {
+    background: #171717;
+    color: #fff;
+}
+
+.contact-submit:hover {
+    background: #262626;
+}
+
+.dark .contact-submit {
+    background: #f5f5f5;
+    color: #111;
+}
+
+.dark .contact-submit:hover {
+    background: #d4d4d4;
+}
+
+.contact-submit.is-success,
+.dark .contact-submit.is-success {
+    background: #16a34a;
+    color: #fff;
+}
+
+html.dark #map,
+html.dark .leaflet-container {
+    border-color: rgba(255, 255, 255, 0.12);
+    background: #171717;
+}
+
+html.dark .custom-marker div {
+    border-color: #171717;
 }
 
 .stat-value {
