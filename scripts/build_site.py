@@ -15,6 +15,7 @@ PAGES = {'index': ('home', 'Steel profiles, formed at Pioneer'),
 COPY = json.loads((ROOT / 'site/strings.json').read_text())
 (ROOT / 'translations.js').write_text('/* Generated from site/strings.json by scripts/build_site.py. */\nconst i18nData = ' + json.dumps(COPY, ensure_ascii=False, indent=2) + ';\n')
 VERSION = hashlib.sha256(b''.join((ROOT / name).read_bytes() for name in ['style.css', 'main.js', 'translations.js'])).hexdigest()[:10]
+FAVICON_VERSION = hashlib.sha256((ROOT / 'resources/Favicon.png').read_bytes()).hexdigest()[:10]
 
 for filename, (page, title) in PAGES.items():
     header = (ROOT / 'site/header.html').read_text()
@@ -29,7 +30,7 @@ for filename, (page, title) in PAGES.items():
     <meta name="description" content="Pioneer Metal Products Factory. Cold-rolled steel reinforcement, drywall and ceiling sections, and custom fabrication for global partners.">
     <meta name="theme-color" content="#d9271c">
     <title>{title} | Pioneer Metal</title>
-    <link rel="icon" href="resources/logo.png">
+    <link rel="icon" type="image/png" href="resources/Favicon.png?v={FAVICON_VERSION}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,500&family=Jost:wght@400;500;600&display=swap" rel="stylesheet">

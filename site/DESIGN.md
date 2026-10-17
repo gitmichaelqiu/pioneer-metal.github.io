@@ -47,7 +47,7 @@ Redraw: list-poster-lines replaced with list-sticky-photo-active-list. The origi
 
 ## Assets and behaviour
 
-All pre-existing asset URLs continue to reference refs/heads/main. Local copies are used only as error fallbacks. Logo_White.png is used on dark surfaces. resources/profile-study.webp is a generated artistic studio visualization, derived from Products_03.jpg, and described as such in its alt text. It is not presented as documentary factory photography or a technical drawing. There are no new statistics, testimonials, customers, specifications, or sample product claims.
+Working pre-existing asset URLs continue to reference refs/heads/main. Logo_White.png, Products_010.jpg and Products_04.jpg use bundled copies because the original main-branch URLs return 404. Other remote images retain local error fallbacks. Logo_White.png is used on dark surfaces. resources/profile-study.webp is a generated artistic studio visualization, derived from Products_03.jpg, and described as such in its alt text. It is not presented as documentary factory photography or a technical drawing. There are no new statistics, testimonials, customers, specifications, or sample product claims.
 
 Shared header/footer and page fragments live under site/. Run python3 scripts/build_site.py to regenerate the five static root pages. CSS tokens, shared interactions, translation data, reduced motion, keyboard focus, and responsive layout are centralized.
 
