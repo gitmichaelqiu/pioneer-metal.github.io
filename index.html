@@ -66,7 +66,7 @@
         href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=Oswald:wght@400;500;600;700&family=Noto+Sans+Arabic:wght@400;700&family=Noto+Sans+JP:wght@400;700&family=Noto+Sans+KR:wght@400;700&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="style.css?v=20261017-type-spacing">
-    <script src="main.js?v=20261017-shared-carousel-slides" defer></script>
+    <script src="main.js?v=20261017-home-hero-refinement" defer></script>
 </head>
 
 <body
@@ -263,7 +263,7 @@
             </div>
         </div>
 
-        <!-- Hero Section (SpartanRef Style) -->
+        <!-- Home hero -->
         <header
             class="hero-carousel home-hero overflow-hidden group relative bg-neutral-900"
             aria-roledescription="carousel" aria-label="Pioneer Metal highlights">
@@ -274,34 +274,27 @@
             <div class="carousel-slide carousel-slide--4" aria-hidden="true"></div>
 
             <!-- Hero Content -->
-            <div
-                class="flex flex-col md:pb-24 text-center pb-16 absolute top-0 right-0 bottom-0 left-0 items-center justify-end z-10">
-                <div class="mb-6 md:mb-8 fade-in-up">
-                    <span
-                        class="backdrop-blur border px-5 py-2 rounded-full text-[10px] md:text-xs font-bold uppercase tracking-[0.06em] bg-red-900/60 border-red-500/50 text-red-100 shadow-[0_0_20px_rgba(219,32,21,0.3)]"
-                        data-i18n="hero-tag">
-                        Industrial Excellence Since 2006
-                    </span>
-                </div>
-                <!-- Giant Text -->
-                <h1 class="text-[18vw] leading-[0.8] font-bold text-white tracking-tighter mix-blend-overlay font-oswald text-outline fade-in-up delay-100"
-                    data-i18n="hero-title">
-                    PRECISION
-                </h1>
-                <p class="text-white/90 dark:text-white/90 text-sm md:text-xl font-light max-w-2xl mt-8 px-6 leading-relaxed fade-in-up delay-200"
-                    data-i18n="hero-desc">
-                    Global leader in manufacturing cold-rolled steel solutions for window systems and industrial
-                    infrastructure.
-                </p>
+            <div class="absolute inset-0 z-10 flex items-end">
+                <div class="grid w-full grid-cols-12 items-end gap-x-8 px-6 pb-20 md:px-12 md:pb-24 lg:pb-28">
+                    <h1 class="col-span-12 font-oswald text-[clamp(4.5rem,12vw,10rem)] font-medium leading-[0.9] tracking-[-0.035em] text-white fade-in-up lg:col-span-8"
+                        data-i18n="hero-title">
+                        PRECISION
+                    </h1>
 
-                <div class="mt-12 fade-in-up delay-300">
-                    <a href="about.html"
-                        class="inline-flex items-center gap-3 text-white border border-white/20 hover:border-white/60 hover:bg-white/10 px-8 py-3.5 rounded-full transition-all text-xs font-bold uppercase tracking-[0.06em] shadow-2xl backdrop-blur-md group"
-                        data-i18n="hero-btn">
-                        Discover Pioneer
-                        <i
-                            class="fa-solid fa-arrow-right group-hover:translate-x-1 transition-transform text-red-500"></i>
-                    </a>
+                    <div class="col-span-12 mt-6 max-w-xl fade-in-up delay-200 lg:col-span-4 lg:col-start-9 lg:mt-0 lg:pb-2">
+                        <p class="max-w-[36ch] text-base leading-relaxed text-white/90 md:text-lg"
+                            data-i18n="hero-desc">
+                            Global leader in manufacturing cold-rolled steel solutions for window systems and industrial
+                            infrastructure.
+                        </p>
+
+                        <a href="products.html"
+                            class="group mt-6 inline-flex min-h-12 items-center gap-3 bg-red-600 px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-red-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
+                            data-i18n="hero-btn">
+                            Discover Pioneer
+                            <i class="fa-solid fa-arrow-right text-white transition-transform group-hover:translate-x-1"></i>
+                        </a>
+                    </div>
                 </div>
             </div>
 
