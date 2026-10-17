@@ -9,6 +9,7 @@
     --light: #f4f4f0;
     --deep-muted: #bfc5bc;
     --font-display: 'Bodoni Moda', Georgia, serif;
+    --display-text-optical-size: 6;
     --font-body: 'Jost', Arial, sans-serif;
     --step-small: 14px;
     --step-body: 18px;
@@ -41,6 +42,11 @@ p { margin: 0; max-width: 62ch; text-wrap: pretty; }
 p + p { margin-top: 24px; }
 h1, h2, h3 { margin: 0; font-family: var(--font-display); font-weight: 500; letter-spacing: -0.035em; line-height: 1.02; text-wrap: balance; }
 h2 { font-size: var(--step-head); }
+/* Bodoni's text cut retains its shapes with sturdier hairlines at reading sizes. */
+h2, .page-title, .footer-invitation {
+    font-optical-sizing: none;
+    font-variation-settings: 'opsz' var(--display-text-optical-size);
+}
 h3 { font-family: var(--font-body); font-size: var(--step-lead); line-height: 1.2; letter-spacing: -0.025em; }
 a { color: inherit; text-decoration: none; }
 button, input, textarea, select { font: inherit; color: inherit; }
