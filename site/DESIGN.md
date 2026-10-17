@@ -100,8 +100,20 @@ Remaining limits: original photographs vary in resolution; real Pioneer footage 
 
 ## Display typography
 
-Bodoni Moda retains weight 500 throughout. Reading-size headings, interior page titles and the footer invitation use optical size 6 for sturdy fine strokes. Oversized lettering (the homepage title, Inquire and the footer name) uses optical size 48 for a lighter treatment. Shared optical settings follow all font shorthands so those shorthands cannot reset them.
+The revised display face is Manrope (400 for the homepage title, 500 for section headings), paired with the existing Jost body face. The same display family appears in page titles, inquiry lettering and the footer. The former Bodoni optical-size rules have been removed.
 
 ## Baseline
 
 The old five-page source lint reported 97 FAIL and 95 WARN. The old homepage browser inspection reported 11 FAIL and 7 WARN. Its hero fit well, but stock card grids, decorative labels, small grey text, floating navigation, and inconsistent composition capped the critique at 6.0.
+
+## Client-directed hero revision — October 2026
+
+The client requested a rotating Pioneer mark inspired by https://www.q-industrial.com/. This is a hero refinement, so the existing direction and page structure are retained rather than redrawn. On this page, Pioneer's octagonal seal becomes a metal object, tying its brand to the steel it manufactures. The name remains the headline; the existing product description and Explore products action retain the first-screen claim and destination.
+
+The emblem's five white shapes are traced from the supplied Favicon.png, then extruded over an octagonal red metal body with silver detailing on both faces. Three.js 0.180.0 is bundled locally with its MIT license; there is no runtime dependency on a 3D CDN. The reference site's models, code and imagery are not reused. The original favicon remains the fallback if modules, geometry loading or WebGL fail.
+
+The live object rotates slowly, supports horizontal dragging, and has a translated pause/resume control in all ten locales. Reduced motion starts it paused. Rendering stops when the emblem is outside the viewport or the document is hidden; pixel ratio is capped at 1.75. The module is loaded only on Home.
+
+Visual review: all five pages pass the skill inspector at 1440, 768 and 390px, with only the previously documented no-footage warning. Screenshots at all widths were reviewed. Pause, resume, horizontal drag and light/dark theme changes were exercised in the browser. Reduced motion and WebGL fallback were reviewed in source; separate emulation was not run.
+
+Self-critique: design 8.3, usability 8.5, creativity 7.4, content 8.0; weighted overall 8.1/10. The logo is a deliberate brand sculpture rather than a product claim. It preserves the supplied silhouette, though the lighting and metal finish remain an artistic interpretation. No new found media, proof or sample business content were added.

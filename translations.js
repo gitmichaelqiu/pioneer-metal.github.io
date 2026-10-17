@@ -106,7 +106,9 @@ const i18nData = {
     "grades": "Material grades",
     "standard": "Standard",
     "verify_fit": "Confirm the dimensions against your uPVC profile before ordering.",
-    "catalogue_specs": "Catalogue specifications"
+    "catalogue_specs": "Catalogue specifications",
+    "pause_rotation": "Pause rotation",
+    "resume_rotation": "Resume rotation"
   },
   "es": {
     "nav-home": "Inicio",
@@ -214,7 +216,9 @@ const i18nData = {
     "grades": "Grados de material",
     "standard": "Norma",
     "verify_fit": "Confirme las dimensiones de su perfil de uPVC antes de realizar el pedido.",
-    "catalogue_specs": "Especificaciones del catálogo"
+    "catalogue_specs": "Especificaciones del catálogo",
+    "pause_rotation": "Pausar rotación",
+    "resume_rotation": "Reanudar rotación"
   },
   "pt": {
     "nav-home": "Início",
@@ -322,7 +326,9 @@ const i18nData = {
     "grades": "Classes de material",
     "standard": "Norma",
     "verify_fit": "Confirme as dimensões do perfil de uPVC antes de encomendar.",
-    "catalogue_specs": "Especificações do catálogo"
+    "catalogue_specs": "Especificações do catálogo",
+    "pause_rotation": "Pausar rotação",
+    "resume_rotation": "Retomar rotação"
   },
   "ru": {
     "nav-home": "Главная",
@@ -430,7 +436,9 @@ const i18nData = {
     "grades": "Марки материала",
     "standard": "Стандарт",
     "verify_fit": "Перед заказом проверьте размеры по вашему профилю uPVC.",
-    "catalogue_specs": "Характеристики из каталога"
+    "catalogue_specs": "Характеристики из каталога",
+    "pause_rotation": "Приостановить вращение",
+    "resume_rotation": "Продолжить вращение"
   },
   "ja": {
     "nav-home": "ホーム",
@@ -538,7 +546,9 @@ const i18nData = {
     "grades": "鋼種",
     "standard": "規格",
     "verify_fit": "発注前にuPVCプロファイルとの寸法適合をご確認ください。",
-    "catalogue_specs": "カタログ仕様"
+    "catalogue_specs": "カタログ仕様",
+    "pause_rotation": "回転を停止",
+    "resume_rotation": "回転を再開"
   },
   "ko": {
     "nav-home": "홈",
@@ -646,7 +656,9 @@ const i18nData = {
     "grades": "강종",
     "standard": "규격",
     "verify_fit": "주문 전에 uPVC 프로파일과 치수를 확인하세요.",
-    "catalogue_specs": "카탈로그 사양"
+    "catalogue_specs": "카탈로그 사양",
+    "pause_rotation": "회전 일시 정지",
+    "resume_rotation": "회전 재개"
   },
   "ar": {
     "nav-home": "الرئيسية",
@@ -754,7 +766,9 @@ const i18nData = {
     "grades": "درجات المواد",
     "standard": "المعيار",
     "verify_fit": "تحقق من الأبعاد مقابل مقطع uPVC قبل الطلب.",
-    "catalogue_specs": "مواصفات الكتالوج"
+    "catalogue_specs": "مواصفات الكتالوج",
+    "pause_rotation": "إيقاف الدوران مؤقتًا",
+    "resume_rotation": "استئناف الدوران"
   },
   "fr": {
     "nav-home": "Accueil",
@@ -862,7 +876,9 @@ const i18nData = {
     "grades": "Nuances de matériau",
     "standard": "Norme",
     "verify_fit": "Vérifiez les dimensions de votre profilé uPVC avant de commander.",
-    "catalogue_specs": "Spécifications du catalogue"
+    "catalogue_specs": "Spécifications du catalogue",
+    "pause_rotation": "Suspendre la rotation",
+    "resume_rotation": "Reprendre la rotation"
   },
   "sq": {
     "nav-home": "Ballina",
@@ -970,7 +986,9 @@ const i18nData = {
     "grades": "Llojet e materialit",
     "standard": "Standardi",
     "verify_fit": "Konfirmoni përmasat me profilin tuaj uPVC para porosisë.",
-    "catalogue_specs": "Specifikimet e katalogut"
+    "catalogue_specs": "Specifikimet e katalogut",
+    "pause_rotation": "Ndalo rrotullimin",
+    "resume_rotation": "Vazhdo rrotullimin"
   },
   "sr": {
     "nav-home": "Početna",
@@ -1078,6 +1096,8 @@ const i18nData = {
     "grades": "Klase materijala",
     "standard": "Standard",
     "verify_fit": "Proverite dimenzije vašeg uPVC profila pre poručivanja.",
-    "catalogue_specs": "Specifikacije kataloga"
+    "catalogue_specs": "Specifikacije kataloga",
+    "pause_rotation": "Pauziraj rotaciju",
+    "resume_rotation": "Nastavi rotaciju"
   }
 };

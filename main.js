@@ -82,6 +82,7 @@
     const themeButton = document.querySelector('.theme-switch');
     const updateThemeButton = () => {
         const dark = root.dataset.theme === 'dark';
+        document.querySelector('meta[name="theme-color"]')?.setAttribute('content', dark ? '#191d19' : '#f4f4f0');
         themeButton.querySelector('.theme-label').textContent = copy(dark ? 'light' : 'dark');
         themeButton.setAttribute('aria-label', dark ? 'Switch to light theme' : 'Switch to dark theme');
         themeButton.setAttribute('aria-pressed', String(dark));
