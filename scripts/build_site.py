@@ -29,7 +29,7 @@ for filename, (page, title) in PAGES.items():
     <meta name="description" content="Pioneer Metal Products Factory. Cold-rolled steel reinforcement, drywall and ceiling sections, and custom fabrication for global partners.">
     <meta name="theme-color" content="#d9271c">
     <title>{title} | Pioneer Metal</title>
-    <link rel="icon" href="resources/Logo.png">
+    <link rel="icon" href="resources/logo.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,500&family=Jost:wght@400;500;600&display=swap" rel="stylesheet">
