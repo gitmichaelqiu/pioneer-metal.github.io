@@ -68,6 +68,7 @@
         updateProfile(false);
         updateThemeButton();
         updateMenuLabel();
+        document.dispatchEvent(new Event('site:languagechange'));
     }
     document.querySelector('#language')?.addEventListener('change', event => setLanguage(event.target.value));
     document.querySelectorAll('[data-profile]').forEach(option => {

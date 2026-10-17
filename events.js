@@ -1,0 +1,27 @@
+/* Generated from site/events.json. */
+const siteEvents = [
+  {
+    "id": "eurasia-window-fair-2026",
+    "name": "Eurasia Window Fair",
+    "startsAt": "2026-11-21T10:00:00+03:00",
+    "endsAt": "2026-11-24T17:00:00+03:00",
+    "timeZone": "Europe/Istanbul",
+    "bannerDays": 60,
+    "venue": "TÜYAP Fair and Congress Center",
+    "city": "Istanbul, Türkiye",
+    "url": "https://www.eurasiawindowdoorfair.com/",
+    "cover": "https://cdn.mytuyap.com/cam/img/blog/inovasyon-tasarim-ve-kuresel.png",
+    "coverCredit": "TÜYAP / Eurasia Window & Door Fair",
+    "coverSource": "https://www.eurasiawindowdoorfair.com/",
+    "poster": "resources/events/eurasia-window-2026-poster.png",
+    "summaryKey": "eurasia_summary",
+    "partner": {
+      "name": "Tonish UPVC",
+      "url": "https://www.dimex.com.np/",
+      "logo": "resources/events/tonish-upvc.png"
+    },
+    "detailHeadingKey": "event_meet",
+    "partnerSummaryKey": "eurasia_partner",
+    "posterIntroKey": "event_poster_intro"
+  }
+];
