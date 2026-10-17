@@ -117,3 +117,13 @@ The live object rotates slowly, supports horizontal dragging, and has a translat
 Visual review: all five pages pass the skill inspector at 1440, 768 and 390px, with only the previously documented no-footage warning. Screenshots at all widths were reviewed. Pause, resume, horizontal drag and light/dark theme changes were exercised in the browser. Reduced motion and WebGL fallback were reviewed in source; separate emulation was not run.
 
 Self-critique: design 8.3, usability 8.5, creativity 7.4, content 8.0; weighted overall 8.1/10. The logo is a deliberate brand sculpture rather than a product claim. It preserves the supplied silhouette, though the lighting and metal finish remain an artistic interpretation. No new found media, proof or sample business content were added.
+
+## Eurasia Window Fair announcement
+
+The existing art direction is retained. The new News story leads the exhibition list in chronological order and links to a static details page with the venue, dates, exhibition partner, meeting enquiry, organizer link and original full-size poster. Event content and banner settings are generated from site/events.json; maintenance instructions are in site/EVENTS.md.
+
+The modular banner uses explicit timezone offsets for its Upcoming / Live / hidden lifecycle, formats dates in Europe/Istanbul, and keeps a Past event label on the archived story. The existing hero accounts for banner height. No server, scheduled job or status-only deployment is required. Device clock accuracy remains the expected static-site limitation.
+
+The client-supplied poster and Tonish logo are preserved. The organizer cover is loaded from the client-supplied URL and credited when shown; client artwork is the stable local fallback. The product photograph is Pioneer's own existing Products_01.jpg. No claims about a booth number, visitor statistics or attendance outcomes were added.
+
+Visual self-review: design 8.1, usability 8.5, creativity 7.0, content 8.4; overall 8.0/10. The details page, News and banner-bearing Home passed inspection at desktop, tablet and mobile widths. The details page's 13 moving elements are sufficient for an information-focused announcement; no extra motion or unrelated footage was added solely to satisfy a count. Local references and anchors across all six pages pass, including Git's exact filename casing. Date boundary comparisons were reviewed in source; no browser clock emulation was performed.
