@@ -69,7 +69,7 @@ async function initEmblem(stage) {
         back.scale.x = -1;
     });
     emblem.rotation.set(0, -.40, 0);
-    emblem.scale.x = 1.10;
+    emblem.scale.z = 2.00;
     let paused = reduced.matches;
     let visible = true;
     let dragging = false;
