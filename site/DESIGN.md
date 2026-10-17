@@ -19,7 +19,7 @@ A full redesign for purchasing teams, window and door manufacturers, constructio
 - FENSTERBAU FRONTALE, Nuremberg, 24–27 March 2026; FESQUA, São Paulo, 9–12 September 2026.
 - Existing reinforcement-steel PDF, phone +86 136 5671 4278, email pioneermetal@163.com, WhatsApp destination, and original map coordinates.
 
-No city or postal address has been verified. The existing map coordinates are retained without adding a city claim.
+The supplied catalogue cover verifies the postal address: 106 East Street, Xinzhen Town, Hebei, China. The original map coordinates are retained.
 
 ## Argument and copy deck
 
@@ -41,6 +41,8 @@ On this page, Pioneer's name and photographed folded steel sections become a mon
 
 Live thing: a product selector using the three existing categories, actual product images and their real catalogue/inquiry destinations. Without JavaScript its links go to the corresponding product sections.
 
+The Products page has a second, page-specific selector for C, U and tube sections. Dimensions, thicknesses, grades and standard come from the supplied catalogue, page 3. The diagrams are simplified schematics, explicitly not to scale. All three tables remain available without JavaScript; selecting a shape carries it to the inquiry draft.
+
 Redraw: list-poster-lines replaced with list-sticky-photo-active-list. The original calls for four to seven very short poster words; Pioneer has three product categories with longer names and full descriptions.
 
 ## Assets and behaviour
@@ -49,7 +51,52 @@ All pre-existing asset URLs continue to reference refs/heads/main. Local copies 
 
 Shared header/footer and page fragments live under site/. Run python3 scripts/build_site.py to regenerate the five static root pages. CSS tokens, shared interactions, translation data, reduced motion, keyboard focus, and responsive layout are centralized.
 
+The canonical ten-language copy is site/strings.json; translations.js is generated. The build hashes the shared CSS/JS into cache versions automatically. It needs Python's standard library only. Existing main-branch image URLs stay in the generated source with checked-in resource files as load-error fallbacks.
+
 Motion: masked name entrance; individually staggered section elements; a subtle image drift; short feedback on controls. Content is visible without script and under reduced motion.
+
+Open-collection video search returned historical industrial footage rather than footage of this factory. None is used. The moving-picture treatment uses the project's stills instead.
+
+## Content reconciliation
+
+The supplied PDF has a 2025 filename and 2026 document metadata. Its page 9 lists 7,000+ annual tons, while the existing website lists 9,000+. The existing website's 9,000+ figure is retained; no new capacity number is asserted. The catalogue-derived specifications are explicitly linked to their source. Edition dates are omitted from the catalogue description.
+
+## Critique log
+
+ROUND 1
+Seen in one second: the Pioneer name as a large red-and-white poster.
+Idea: the company name is given the scale of its steel, followed by material and factory views.
+Live thing: application selector with actual product photographs and working destinations.
+Layout words by section: hero=monument / material=unequal-band / company=side-facts / capacity=figure-lines / products=sticky-selector / partnerships=reading-rows / inquiry=word-band / footer=cropped-name.
+Scores: design 7.5 · usability 7.8 · creativity 7.0 · content 8.0 → overall 7.55.
+Caps applied: none; all five pages passed measured layout checks.
+Top three problems: mobile-fold had excessive empty red space, fixed with a real production-photo insert beneath the name; desktop-page-02 showed the Inquire descender crossing its field, fixed with glyph clearance; all first folds showed the logo emblem flattened by an image filter, fixed by using the actual white logo asset.
+The mobile photo is an adaptation of the parent direction's photograph-under-name composition, introduced during the screenshot critique.
+
+ROUND 2
+Seen in one second: a red typographic identity followed by sculptural silver and real factory views.
+Idea and live thing: unchanged, with catalogue-backed section selection added to Products.
+Scores capped at 6.0 while the inquiry prompt was measured as an eyebrow above its oversized action. The prompt was moved below the action. Products' redundant generic inquiry band was removed because that page already ends with its direct custom-fabrication inquiry.
+
+ROUND 3 / final
+Seen in one second: Pioneer, at the scale of the material it makes.
+Idea: the name is a monument; real folded sections and catalogue data supply the substance beneath it.
+Live things: application selector on Home; catalogue section selector on Products, with selected shape carried into Contact.
+Layout words by section: monument / unequal-band / side-facts / figure-lines / sticky-selector / reading-rows / word-band / cropped-name. Interior pages use image splits, staggered factory images, genuine specification tables, exhibition stories, and an inquiry form.
+Scores: design 8.1 · usability 8.5 · creativity 7.0 · content 8.0 → overall 8.0 (self-critique, not an independent jury score).
+Caps applied: creativity capped at 7 because the monument approach is a known composition, even though the content, actual factory imagery and profiles belong to Pioneer.
+Remaining limits: original photographs vary in resolution; real Pioneer footage would improve the moving-picture sequence. The only generated picture is profile-study.webp, not a technical specification. No found photographs or film clips were used, and no sample business proof or placeholders were added.
+
+## Final validation
+
+- Source lint across all five pages, shared CSS, behaviour and generated translations: 0 FAIL / 0 WARN.
+- Real-browser inspection at 1440, 768 and 390px: every page 0 FAIL. Home retains two warnings (white body text on brand red passes AA at 4.9:1; no documentary footage). Other pages retain only the no-footage warning. Motion uses the project's still photographs and the studio study rather than misrepresenting archival footage as this factory.
+- All listed viewport and page screenshots reviewed, including full-page review sheets for each page.
+- All five pages checked in all ten locales at 320px: no horizontal overflow or headings over two lines.
+- Actual browser interactions verified: application selector, C/U/tube selection, selected section passed into Contact, mobile menu open/close, both themes, correct logo in each theme.
+- JavaScript syntax, unique IDs, one main heading per page, internal links and anchors, image fallback paths, translation-key coverage, and deterministic static generation checked.
+- Inquiry behaviour is intentionally an email draft handoff. No message was sent during verification. Copy controls are present; clipboard permission-dependent behaviour was not exercised.
+- Reduced-motion and no-script fallbacks are implemented and reviewed in source; no claim of separate browser emulation is made.
 
 ## Baseline
 
