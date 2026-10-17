@@ -43,11 +43,6 @@ p { margin: 0; max-width: 62ch; text-wrap: pretty; }
 p + p { margin-top: 24px; }
 h1, h2, h3 { margin: 0; font-family: var(--font-display); font-weight: 500; letter-spacing: -0.035em; line-height: 1.02; text-wrap: balance; }
 h2 { font-size: var(--step-head); }
-/* Bodoni's text cut retains its shapes with sturdier hairlines at reading sizes. */
-h2, .page-title, .footer-invitation {
-    font-optical-sizing: none;
-    font-variation-settings: 'opsz' var(--display-text-optical-size);
-}
 h3 { font-family: var(--font-body); font-size: var(--step-lead); line-height: 1.2; letter-spacing: -0.025em; }
 a { color: inherit; text-decoration: none; }
 button, input, textarea, select { font: inherit; color: inherit; }
@@ -84,7 +79,7 @@ html:not(.enhanced) .header-tools { display: none; }
 .home .logo-light { display: none; }
 .home .logo-dark { display: block; }
 .monument-hero { background: var(--accent); color: var(--accent-ink); min-height: calc(100svh - 88px); display: flex; flex-direction: column; justify-content: space-between; padding-top: 30px; padding-bottom: 32px; }
-.monument { font-size: var(--name-size); line-height: .82; letter-spacing: -.065em; font-weight: 500; font-optical-sizing: none; font-variation-settings: 'opsz' var(--display-title-optical-size); }
+.monument { font-size: var(--name-size); line-height: .82; letter-spacing: -.065em; font-weight: 500; }
 .name-line { display: block; overflow: hidden; padding-block: .06em; margin-block: -.025em; }
 .name-line > span { display: block; }
 .hero-bottom { display: flex; justify-content: space-between; align-items: flex-end; gap: var(--gap); margin-top: 40px; }
@@ -156,6 +151,15 @@ html:not(.enhanced) .header-tools { display: none; }
 .footer-legal { display: flex; justify-content: space-between; gap: 24px; align-items: center; margin-top: 88px; font-size: var(--step-small); }
 .footer-legal p + p { margin-top: 0; }
 .footer-monument { font: 500 var(--name-size)/.85 var(--font-display); letter-spacing: -.065em; margin-top: 50px; max-width: none; transform: translateY(18%); white-space: nowrap; }
+/* Apply after font shorthands, which reset optical sizing and variation settings. */
+h1, h2, .footer-invitation, .inquiry-word, .footer-monument {
+    font-optical-sizing: none;
+    font-variation-settings: 'opsz' var(--display-text-optical-size);
+}
+.monument, .inquiry-word, .footer-monument {
+    font-weight: 500;
+    font-variation-settings: 'opsz' var(--display-title-optical-size);
+}
 .split-hero { display: grid; grid-template-columns: 1fr 1fr; gap: var(--gap); align-items: center; padding-top: 48px; }
 .split-hero-copy { padding-right: 8%; }
 .page-title { font-size: var(--step-display); margin-bottom: 40px; }

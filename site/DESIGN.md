@@ -98,6 +98,10 @@ Remaining limits: original photographs vary in resolution; real Pioneer footage 
 - Inquiry behaviour is intentionally an email draft handoff. No message was sent during verification. Copy controls are present; clipboard permission-dependent behaviour was not exercised.
 - Reduced-motion and no-script fallbacks are implemented and reviewed in source; no claim of separate browser emulation is made.
 
+## Display typography
+
+Bodoni Moda retains weight 500 throughout. Reading-size headings, interior page titles and the footer invitation use optical size 6 for sturdy fine strokes. Oversized lettering (the homepage title, Inquire and the footer name) uses optical size 48 for a lighter treatment. Shared optical settings follow all font shorthands so those shorthands cannot reset them.
+
 ## Baseline
 
 The old five-page source lint reported 97 FAIL and 95 WARN. The old homepage browser inspection reported 11 FAIL and 7 WARN. Its hero fit well, but stock card grids, decorative labels, small grey text, floating navigation, and inconsistent composition capped the critique at 6.0.
