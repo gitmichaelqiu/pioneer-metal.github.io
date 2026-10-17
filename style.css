@@ -337,6 +337,18 @@ html.dark .leaflet-popup-content-wrapper {
     background: rgba(0, 0, 0, 0.50);
 }
 
+.home-hero::before {
+    background:
+        linear-gradient(90deg, rgba(8, 10, 12, 0.48) 0%, rgba(8, 10, 12, 0.2) 56%, rgba(8, 10, 12, 0.06) 100%),
+        linear-gradient(0deg, rgba(8, 10, 12, 0.7) 0%, rgba(8, 10, 12, 0.2) 54%, rgba(8, 10, 12, 0.12) 100%);
+}
+
+html[dir="rtl"] .home-hero::before {
+    background:
+        linear-gradient(270deg, rgba(8, 10, 12, 0.48) 0%, rgba(8, 10, 12, 0.2) 56%, rgba(8, 10, 12, 0.06) 100%),
+        linear-gradient(0deg, rgba(8, 10, 12, 0.7) 0%, rgba(8, 10, 12, 0.2) 54%, rgba(8, 10, 12, 0.12) 100%);
+}
+
 .dot {
     display: grid;
     width: 32px;
