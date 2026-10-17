@@ -10,6 +10,7 @@
     --deep-muted: #bfc5bc;
     --font-display: 'Bodoni Moda', Georgia, serif;
     --display-text-optical-size: 6;
+    --display-title-optical-size: 48;
     --font-body: 'Jost', Arial, sans-serif;
     --step-small: 14px;
     --step-body: 18px;
@@ -83,7 +84,7 @@ html:not(.enhanced) .header-tools { display: none; }
 .home .logo-light { display: none; }
 .home .logo-dark { display: block; }
 .monument-hero { background: var(--accent); color: var(--accent-ink); min-height: calc(100svh - 88px); display: flex; flex-direction: column; justify-content: space-between; padding-top: 30px; padding-bottom: 32px; }
-.monument { font-size: var(--name-size); line-height: .82; letter-spacing: -.065em; font-weight: 500; }
+.monument { font-size: var(--name-size); line-height: .82; letter-spacing: -.065em; font-weight: 500; font-optical-sizing: none; font-variation-settings: 'opsz' var(--display-title-optical-size); }
 .name-line { display: block; overflow: hidden; padding-block: .06em; margin-block: -.025em; }
 .name-line > span { display: block; }
 .hero-bottom { display: flex; justify-content: space-between; align-items: flex-end; gap: var(--gap); margin-top: 40px; }
