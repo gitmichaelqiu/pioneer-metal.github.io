@@ -3,6 +3,7 @@ from pathlib import Path
 import re
 import json
 import hashlib
+from html import escape
 
 ROOT = Path(__file__).resolve().parent.parent
 ASSETS = 'https://raw.githubusercontent.com/pioneer-metal/pioneer-metal.github.io/refs/heads/main/resources/'
@@ -53,5 +54,9 @@ for filename, (page, title) in PAGES.items():
                 return match[0]
             return f'{match[1]} data-i18n="{key}"{match[2]}{copy}{match[3]}'
         html = re.sub(pattern, annotate, html)
+        # The static, no-script page must carry the same canonical English copy.
+        translated = r'(<(?P<tag>[a-z][a-z0-9]*)\b[^>]*data-i18n="' + re.escape(key) + r'"[^>]*>)[\s\S]*?(</(?P=tag)>)'
+        rendered_copy = escape(copy, quote=False).replace('&lt;br&gt;', '<br>')
+        html = re.sub(translated, lambda match: match[1] + rendered_copy + match[3], html)
     (ROOT / f'{filename}.html').write_text(html)
     print(f'Built {filename}.html')
