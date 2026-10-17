@@ -1,376 +1,215 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-
 <head>
-    <script>
-        fetch('https://ipapi.co/json/')
-            .then(response => response.json())
-            .then(data => {
-                if (data.country_code == 'CN') {
-                    window.location.href = "/not-found";
-                }
-            })
-
-        function checkLocation() {
-            const providers = [
-                'https://ipapi.co/json/',
-                'https://ipwho.is/json/'
-            ];
-
-            const fetchLocation = (url) => {
-                fetch(url)
-                    .then(response => {
-                        if (!response.ok) throw new Error('Network response was not ok');
-                        return response.json();
-                    })
-                    .then(data => {
-                        const code = data.country_code || data.country;
-                        if (code === 'CN') {
-                            window.location.href = "/not-found";
-                        }
-                    })
-                    .catch(err => {
-                        console.warn(`定位获取失败 (${url}):`, err);
-                        if (url === providers[0]) fetchLocation(providers[1]);
-                    });
-            };
-
-            fetchLocation(providers[0]);
-        }
-        checkLocation();
-    </script>
-
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Us | PIONEER METAL</title>
-
-    <script>
-        (function () {
-            var lang = localStorage.getItem('preferred-lang') || 'en';
-            document.documentElement.lang = lang;
-            document.documentElement.dir = (lang === 'ar') ? 'rtl' : 'ltr';
-            document.documentElement.classList.add('i18n-loading');
-        })();
-    </script>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lipis/flag-icons@7.2.3/css/flag-icons.min.css" />
-
-    <!-- Leaflet 地图库 -->
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Pioneer Metal Products Factory. Cold-rolled steel reinforcement, drywall and ceiling sections, and custom fabrication for global partners.">
+    <meta name="theme-color" content="#f4f4f0">
+    <title>Start a conversation | Pioneer Metal</title>
+    <link rel="icon" type="image/png" href="resources/Favicon.png?v=18fe97033b">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&family=Noto+Sans+Arabic:wght@400;700&family=Noto+Sans+JP:wght@400;700&family=Noto+Sans+KR:wght@400;700&display=swap"
-        rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
-    <script src="main.js" defer></script>
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600&family=Manrope:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css?v=d8f22f5583">
+    <script>try{document.documentElement.dataset.theme=localStorage.getItem('theme')||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light')}catch(e){}</script>
+    <script src="translations.js?v=d8f22f5583" defer></script>
+    <script src="main.js?v=d8f22f5583" defer></script>
+
 </head>
+<body class="contact" id="top">
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header">
+ <a aria-label="Pioneer Metal home" class="brand" href="index.html">
+  <img alt="Pioneer Metal, excellence in steel" class="logo-light" data-local="resources/logo.png" height="617" src="https://raw.githubusercontent.com/pioneer-metal/pioneer-metal.github.io/refs/heads/main/resources/logo.png" width="2809"/>
+  <img alt="Pioneer Metal, excellence in steel" class="logo-dark" height="616" src="resources/Logo_White.png" width="2809"/>
+ </a>
+ <nav aria-label="Main navigation" class="site-nav" id="site-nav">
+  <a data-i18n="nav-home" data-page="home" href="index.html">Home</a>
+  <a data-i18n="nav-about" data-page="about" href="about.html">About</a>
+  <a data-i18n="nav-products" data-page="products" href="products.html">Products</a>
+  <a data-i18n="nav-news" data-page="news" href="news.html">News</a>
+  <a data-i18n="nav-contact" data-page="contact" aria-current="page" href="contact.html">Contact</a>
+ </nav>
+ <div class="header-tools">
+  <label class="language">
+   <span class="visually-hidden">
+    Language
+   </span>
+   <select aria-label="Language" id="language">
+    <option value="en">
+     EN
+    </option>
+    <option value="es">
+     ES
+    </option>
+    <option value="pt">
+     PT
+    </option>
+    <option value="ru">
+     RU
+    </option>
+    <option value="ja">
+     JA
+    </option>
+    <option value="ko">
+     KO
+    </option>
+    <option value="ar">
+     AR
+    </option>
+    <option value="fr">
+     FR
+    </option>
+    <option value="sq">
+     SQ
+    </option>
+    <option value="sr">
+     SR
+    </option>
+   </select>
+  </label>
+  <button aria-label="Switch colour theme" class="theme-switch" type="button">
+   <span class="theme-label" data-i18n="dark">Dark</span>
+   <svg aria-hidden="true" class="theme-symbol" height="20" viewbox="0 0 24 24" width="20">
+    <circle cx="12" cy="12" fill="none" r="8" stroke="currentColor" stroke-width="1.6">
+    </circle>
+    <path d="M12 4a8 8 0 0 1 0 16Z" fill="currentColor">
+    </path>
+   </svg>
+  </button>
+  <button aria-controls="site-nav" aria-expanded="false" class="menu-switch" type="button">
+   <span class="menu-label" data-i18n="menu">Menu</span>
+   <svg aria-hidden="true" height="20" viewbox="0 0 24 24" width="20">
+    <path d="M3 7h18M3 12h18M3 17h18" fill="none" stroke="currentColor" stroke-width="1.6">
+    </path>
+   </svg>
+  </button>
+ </div>
+</header>
 
-<body class="bg-gray-50 text-gray-900 overflow-x-hidden">
+    <main id="main"><section class="contact-opening wrap section-space">
+ <div>
+  <h1 class="page-title" data-i18n="contact-header" data-reveal="">Let's connect</h1>
+  <p data-i18n="contact-subheader" data-reveal="">Ready to discuss your next project? Reach out to our global sales team today.</p>
+  <div class="direct-contact" data-reveal="">
+   <div class="contact-channel">
+    <a href="tel:+8613656714278">
+     +86 136 5671 4278
+    </a>
+    <button class="copy-control" data-copy-value="+86 136 5671 4278" data-i18n="copy" type="button">Copy</button>
+   </div>
+   <div class="contact-channel">
+    <a href="mailto:pioneermetal@163.com">
+     pioneermetal@163.com
+    </a>
+    <button class="copy-control" data-copy-value="pioneermetal@163.com" data-i18n="copy" type="button">Copy</button>
+   </div>
+   <a class="text-link" href="https://wa.me/8613656714278" rel="noopener" target="_blank">
+    Chat on WhatsApp
+   </a>
+   <p class="copy-status" role="status">
+   </p>
+  </div>
+ </div>
+ <figure data-reveal="">
+  <img alt="Studio material study of folded steel profiles" class="" decoding="async" loading="eager" src="resources/profile-study.webp"/>
+ </figure>
+</section>
+<section class="contact-form-section wrap section-space">
+ <div class="form-intro">
+  <h2 data-i18n="form-title" data-reveal="">Send Inquiry</h2>
+  <p data-i18n="contact_brief" data-reveal="">Tell us the application, profile shape, dimensions, quantity, and delivery destination. A drawing is a helpful place to start.</p>
+  <p class="small" data-i18n="contact_disclosure" data-reveal="">This form prepares an email in your email app. Your message is sent when you send that email.</p>
+ </div>
+ <form action="mailto:pioneermetal@163.com" enctype="text/plain" id="contactForm" method="get">
+  <div class="form-row">
+   <label data-i18n="form-name" for="formName">Your Name</label>
+   <input autocomplete="name" id="formName" name="name" required=""/>
+  </div>
+  <div class="form-row">
+   <label data-i18n="form-email" for="formEmail">Email Address</label>
+   <input autocomplete="email" id="formEmail" name="email" required="" type="email"/>
+  </div>
+  <div class="form-row">
+   <label data-i18n="application" for="formProduct">Product or application</label>
+   <select id="formProduct" name="product">
+    <option data-i18n="select_application" value="">Select an application</option>
+    <option data-i18n="p1-name" value="Steel Reinforcement">Steel Reinforcement</option>
+    <option data-i18n="p2-name" value="Drywall and Ceiling">Drywall &amp; Ceiling</option>
+    <option data-i18n="p3-name" value="Custom Fabrication">Custom Fabrication</option>
+    <option data-i18n="other_inquiry" value="Other inquiry">Other inquiry</option>
+   </select>
+  </div>
+  <div class="form-row">
+   <label data-i18n="form-msg" for="formMsg">Message</label>
+   <textarea id="formMsg" name="message" required="" rows="5"></textarea>
+  </div>
+  <button class="button" data-i18n="form-btn" type="submit">Prepare email</button>
+  <p class="form-status" role="status">
+  </p>
+ </form>
+</section>
+<section class="location-section wrap section-space">
+ <div>
+  <h2 data-i18n="location" data-reveal="">Location map</h2>
+  <p data-reveal="">
+   Pioneer Metal Products Factory
+  </p>
+  <address>
+   106 East Street
+   <br/>
+   Xinzhen Town, Hebei
+   <br/>
+   China
+  </address>
+  <a class="text-link" data-i18n="open_map" href="https://www.openstreetmap.org/?mlat=38.86&amp;mlon=116.48#map=13/38.86/116.48" rel="noopener" target="_blank">Open map</a>
+ </div>
+ <iframe loading="lazy" src="https://www.openstreetmap.org/export/embed.html?bbox=116.43%2C38.83%2C116.53%2C38.89&amp;layer=mapnik&amp;marker=38.86%2C116.48" title="Pioneer Metal location map">
+ </iframe>
+</section>
+<section class="section-space">
+ <div class="showcase-heading wrap">
+  <h2 data-i18n="shipment_title" data-reveal="">From section to shipment</h2>
+  <p data-i18n="shipment_intro" data-reveal="">Manufacturing, packed profiles, and the logistics that bring them to your project.</p>
+ </div>
+ <div class="contact-photo-band">
+  <figure data-reveal="">
+   <img alt="Steel sections in the factory warehouse" class="" data-local="resources/Home_01.jpg" decoding="async" loading="lazy" src="https://raw.githubusercontent.com/pioneer-metal/pioneer-metal.github.io/refs/heads/main/resources/Home_01.jpg"/>
+  </figure>
+  <figure data-reveal="">
+   <img alt="Bundled cold-rolled steel sections" class="" decoding="async" loading="lazy" src="resources/Products_04.jpg"/>
+  </figure>
+  <figure data-reveal="">
+   <img alt="A packed freight container ready to leave Pioneer" class="" data-local="resources/AboutUs_02.jpg" decoding="async" loading="lazy" src="https://raw.githubusercontent.com/pioneer-metal/pioneer-metal.github.io/refs/heads/main/resources/AboutUs_02.jpg"/>
+  </figure>
+ </div>
+</section>
+</main>
+    <footer class="site-footer">
+ <div class="footer-top">
+  <h2 class="footer-invitation" data-i18n="footer_invite" data-reveal="">Let's make<br>your next profile.</h2>
+  <div class="footer-contact" data-reveal="">
+   <a href="mailto:pioneermetal@163.com">
+    pioneermetal@163.com
+   </a>
+   <a href="tel:+8613656714278">
+    +86 136 5671 4278
+   </a>
+   <a href="https://wa.me/8613656714278" rel="noopener" target="_blank">
+    WhatsApp
+   </a>
+   <a data-i18n="nav-news" href="news.html">News</a>
+  </div>
+ </div>
+ <div class="footer-legal">
+  <p data-i18n="footer-company">© 2025 Pioneer Metal Products Factory.</p>
+  <p data-i18n="footer-rights">All Rights Reserved</p>
+  <a data-i18n="back_top" href="#top">Back to top</a>
+ </div>
+ <p aria-hidden="true" class="footer-monument">
+  PIONEER
+ </p>
+</footer>
 
-    <!-- Navigation -->
-    <nav class="fixed w-full z-50 bg-white/90 backdrop-blur-md border-b border-gray-100 shadow-sm">
-        <div class="max-w-7xl mx-auto px-6 lg:px-12 flex justify-between items-center h-20">
-            <a href="index.html" class="flex items-center group">
-                <img src="https://raw.githubusercontent.com/pioneer-metal/pioneer-metal.github.io/refs/heads/main/resources/logo.png"
-                    alt="Pioneer Metal Logo" class="h-12 w-auto transition-transform group-hover:scale-105">
-            </a>
-
-            <!-- Desktop Menu -->
-            <div
-                class="hidden md:flex items-center space-x-10 text-sm font-bold uppercase tracking-wider text-gray-600">
-                <a href="index.html" class="nav-link hover:text-red-600 transition-colors" data-i18n="nav-home">Home</a>
-                <a href="about.html" class="nav-link hover:text-red-600 transition-colors"
-                    data-i18n="nav-about">About</a>
-                <a href="products.html" class="nav-link hover:text-red-600 transition-colors"
-                    data-i18n="nav-products">Products</a>
-                <a href="news.html" class="nav-link hover:text-red-600 transition-colors" data-i18n="nav-news">News</a>
-                <a href="contact.html" class="nav-link text-red-600" data-i18n="nav-contact">Contact</a>
-            </div>
-
-            <!-- Language Selector (Custom) -->
-            <div class="relative hidden md:block">
-                <button onclick="toggleLangDropdown(event)" aria-label="Select Language"
-                    class="flex items-center space-x-3 bg-gray-50 hover:bg-gray-100 px-4 py-2.5 rounded-full border border-gray-200 transition-all cursor-pointer">
-                    <div id="currentFlag" class="flex items-center">
-                        <span class="fi fi-us rounded-sm"></span>
-                    </div>
-                    <span id="currentLangLabel" class="text-xs font-bold uppercase tracking-tighter">English</span>
-                    <i class="fa-solid fa-chevron-down text-[10px] text-gray-400 transition-transform duration-300"
-                        id="langChevron"></i>
-                </button>
-                <div id="langDropdown"
-                    class="lang-dropdown overflow-hidden absolute right-0 mt-2 bg-white shadow-xl rounded-xl hidden">
-                    <div class="py-1 max-h-[400px] overflow-y-auto">
-                        <button onclick="changeLanguage('en')"
-                            class="w-full px-4 py-3 text-left text-[11px] font-bold flex items-center space-x-3 hover:bg-red-50 transition-colors"><span
-                                class="fi fi-us"></span><span>ENGLISH</span></button>
-                        <button onclick="changeLanguage('es')"
-                            class="w-full px-4 py-3 text-left text-[11px] font-bold flex items-center space-x-3 hover:bg-red-50 transition-colors"><span
-                                class="fi fi-es"></span><span>ESPAÑOL</span></button>
-                        <button onclick="changeLanguage('pt')"
-                            class="w-full px-4 py-3 text-left text-[11px] font-bold flex items-center space-x-3 hover:bg-red-50 transition-colors"><span
-                                class="fi fi-pt"></span><span>PORTUGUÊS</span></button>
-                        <button onclick="changeLanguage('ru')"
-                            class="w-full px-4 py-3 text-left text-[11px] font-bold flex items-center space-x-3 hover:bg-red-50 transition-colors"><span
-                                class="fi fi-ru"></span><span>РУССКИЙ</span></button>
-                        <button onclick="changeLanguage('ja')"
-                            class="w-full px-4 py-3 text-left text-[11px] font-bold flex items-center space-x-3 hover:bg-red-50 transition-colors"><span
-                                class="fi fi-jp"></span><span>日本語</span></button>
-                        <button onclick="changeLanguage('ko')"
-                            class="w-full px-4 py-3 text-left text-[11px] font-bold flex items-center space-x-3 hover:bg-red-50 transition-colors"><span
-                                class="fi fi-kr"></span><span>한국어</span></button>
-                        <button onclick="changeLanguage('ar')"
-                            class="w-full px-4 py-3 text-left text-[11px] font-bold flex items-center space-x-3 hover:bg-red-50 transition-colors"><span
-                                class="fi fi-sa"></span><span>العربية</span></button>
-                        <button onclick="changeLanguage('fr')"
-                            class="w-full px-4 py-3 text-left text-[11px] font-bold flex items-center space-x-3 hover:bg-red-50 transition-colors"><span
-                                class="fi fi-fr"></span><span>FRANÇAIS</span></button>
-                        <button onclick="changeLanguage('sq')"
-                            class="w-full px-4 py-3 text-left text-[11px] font-bold flex items-center space-x-3 hover:bg-red-50 transition-colors"><span
-                                class="fi fi-al"></span><span>SHQIP</span></button>
-                        <button onclick="changeLanguage('sr')"
-                            class="w-full px-4 py-3 text-left text-[11px] font-bold flex items-center space-x-3 hover:bg-red-50 transition-colors"><span
-                                class="fi fi-rs"></span><span>SRPSKI</span></button>
-                    </div>
-                </div>
-            </div>
-
-            <button class="md:hidden text-black text-xl p-2" aria-label="Toggle Mobile Menu"
-                onclick="toggleMobileMenu()">
-                <i class="fas fa-bars"></i>
-            </button>
-        </div>
-
-        <!-- Mobile Menu -->
-        <div id="mobile-menu"
-            class="hidden md:hidden absolute top-20 left-0 w-full bg-white shadow-xl border-t border-slate-100 p-6 flex-col space-y-4">
-            <a href="index.html" class="block text-sm font-bold text-slate-600 hover:text-red-600"
-                data-i18n="nav-home">Home</a>
-            <a href="about.html" class="block text-sm font-bold text-slate-600 hover:text-red-600"
-                data-i18n="nav-about">About</a>
-            <a href="products.html" class="block text-sm font-bold text-slate-600 hover:text-red-600"
-                data-i18n="nav-products">Products</a>
-            <a href="news.html" class="block text-sm font-bold text-slate-600 hover:text-red-600"
-                data-i18n="nav-news">News</a>
-            <a href="contact.html" class="block text-sm font-bold text-red-600" data-i18n="nav-contact">Contact</a>
-
-            <div class="pt-4 border-t border-slate-100">
-                <p class="text-xs font-bold text-slate-400 mb-2 uppercase tracking-widest">Language</p>
-                <div class="flex flex-wrap gap-2">
-                    <button onclick="changeLanguage('en')"
-                        class="px-3 py-1 bg-slate-100 rounded text-xs font-bold hover:bg-red-600 hover:text-white">EN</button>
-                    <button onclick="changeLanguage('es')"
-                        class="px-3 py-1 bg-slate-100 rounded text-xs font-bold hover:bg-red-600 hover:text-white">ES</button>
-                    <button onclick="changeLanguage('pt')"
-                        class="px-3 py-1 bg-slate-100 rounded text-xs font-bold hover:bg-red-600 hover:text-white">PT</button>
-                    <button onclick="changeLanguage('ru')"
-                        class="px-3 py-1 bg-slate-100 rounded text-xs font-bold hover:bg-red-600 hover:text-white">RU</button>
-                    <button onclick="changeLanguage('ja')"
-                        class="px-3 py-1 bg-slate-100 rounded text-xs font-bold hover:bg-red-600 hover:text-white">JA</button>
-                    <button onclick="changeLanguage('ko')"
-                        class="px-3 py-1 bg-slate-100 rounded text-xs font-bold hover:bg-red-600 hover:text-white">KO</button>
-                    <button onclick="changeLanguage('ar')"
-                        class="px-3 py-1 bg-slate-100 rounded text-xs font-bold hover:bg-red-600 hover:text-white">AR</button>
-                    <button onclick="changeLanguage('fr')"
-                        class="px-3 py-1 bg-slate-100 rounded text-xs font-bold hover:bg-red-600 hover:text-white">FR</button>
-                    <button onclick="changeLanguage('sq')"
-                        class="px-3 py-1 bg-slate-100 rounded text-xs font-bold hover:bg-red-600 hover:text-white">SQ</button>
-                    <button onclick="changeLanguage('sr')"
-                        class="px-3 py-1 bg-slate-100 rounded text-xs font-bold hover:bg-red-600 hover:text-white">SR</button>
-                </div>
-            </div>
-        </div>
-    </nav>
-
-    <!-- 头部区域 -->
-    <header class="pt-36 pb-20 bg-white">
-        <div class="max-w-7xl mx-auto px-6 lg:px-12">
-            <span class="text-red-600 font-bold text-sm uppercase tracking-widest mb-4 block"
-                data-i18n="nav-contact">Contact</span>
-            <h1 class="text-5xl md:text-6xl font-black mb-6 tracking-tight" data-i18n="contact-h">Let's Connect</h1>
-            <p class="text-gray-500 max-w-2xl text-lg leading-relaxed" data-i18n="contact-p">Partner with us for
-                world-class steel solutions. Our team is ready to support your engineering requirements globally.</p>
-        </div>
-    </header>
-
-    <!-- 主要区域 -->
-    <main class="max-w-7xl mx-auto px-6 lg:px-12 py-12">
-        <div class="grid lg:grid-cols-2 gap-16 items-start">
-            <!-- 联系表单 -->
-            <div
-                class="bg-white p-8 md:p-12 rounded-[2.5rem] shadow-2xl shadow-gray-200/50 border border-gray-100 relative overflow-hidden group">
-                <div
-                    class="absolute top-0 right-0 w-40 h-40 bg-red-50 rounded-bl-full -mr-16 -mt-16 transition-transform group-hover:scale-110">
-                </div>
-
-                <h2 class="text-2xl font-bold mb-10 relative" data-i18n="form-title">Send a Message</h2>
-                <form id="contactForm" class="space-y-8 relative">
-                    <div class="grid md:grid-cols-2 gap-8">
-                        <div class="space-y-2">
-                            <label class="block text-[10px] font-black uppercase text-gray-400 tracking-widest ml-1"
-                                data-i18n="form-name">Full Name</label>
-                            <input type="text" id="formName" placeholder="John Doe"
-                                class="w-full px-6 py-4 bg-gray-50 border border-gray-100 rounded-2xl focus:bg-white focus:ring-4 focus:ring-red-500/10 focus:border-red-600 outline-none transition-all">
-                        </div>
-                        <div class="space-y-2">
-                            <label class="block text-[10px] font-black uppercase text-gray-400 tracking-widest ml-1"
-                                data-i18n="form-email">Email Address</label>
-                            <input type="email" id="formEmail" placeholder="john@example.com"
-                                class="w-full px-6 py-4 bg-gray-50 border border-gray-100 rounded-2xl focus:bg-white focus:ring-4 focus:ring-red-500/10 focus:border-red-600 outline-none transition-all">
-                        </div>
-                    </div>
-                    <div class="space-y-2">
-                        <label class="block text-[10px] font-black uppercase text-gray-400 tracking-widest ml-1"
-                            data-i18n="form-msg">Message</label>
-                        <textarea id="formMsg" rows="4"
-                            class="w-full px-6 py-4 bg-gray-50 border border-gray-100 rounded-2xl focus:bg-white focus:ring-4 focus:ring-red-500/10 focus:border-red-600 outline-none transition-all resize-none"></textarea>
-                    </div>
-                    <button
-                        class="w-full bg-red-600 text-white font-black py-5 rounded-2xl hover:bg-red-700 hover:shadow-lg hover:shadow-red-600/30 transition-all flex items-center justify-center space-x-4 group">
-                        <span data-i18n="form-btn">SEND INQUIRY</span>
-                        <i
-                            class="fa-solid fa-paper-plane text-sm transition-transform group-hover:translate-x-2 group-hover:-translate-y-1"></i>
-                    </button>
-                </form>
-            </div>
-
-            <!-- 联系详情与地图 -->
-            <div class="space-y-10">
-                <div class="grid sm:grid-cols-2 gap-6">
-                    <div
-                        class="bg-white p-8 rounded-3xl border border-gray-100 shadow-sm hover:shadow-md transition-shadow">
-                        <div
-                            class="w-14 h-14 bg-red-600/10 rounded-2xl flex items-center justify-center mb-6 text-red-600">
-                            <i class="fa-solid fa-phone text-xl"></i>
-                        </div>
-                        <h3 class="font-bold text-lg mb-2" data-i18n="contact-phone">Phone Support</h3>
-                        <p class="text-gray-500 text-sm font-medium tracking-tight">+86 136 5671 4278</p>
-                    </div>
-                    <div
-                        class="bg-white p-8 rounded-3xl border border-gray-100 shadow-sm hover:shadow-md transition-shadow">
-                        <div
-                            class="w-14 h-14 bg-red-600/10 rounded-2xl flex items-center justify-center mb-6 text-red-600">
-                            <i class="fa-solid fa-envelope text-xl"></i>
-                        </div>
-                        <h3 class="font-bold text-lg mb-2" data-i18n="contact-email">Email Inquiries</h3>
-                        <p class="text-gray-500 text-sm font-medium tracking-tight">pioneermetal@163.com</p>
-                    </div>
-                </div>
-                <div id="map"></div>
-            </div>
-        </div>
-    </main>
-
-    <footer class="bg-black text-slate-500 py-10 border-t border-white/5">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex flex-col md:flex-row justify-between items-center md:items-end gap-10 rtl:text-right">
-                <!-- Left Side: Copyright & Socials -->
-                <div class="flex flex-col items-center md:items-start space-y-6 flex-1 w-full">
-                    <!-- Text Group -->
-                    <div
-                        class="text-[10px] font-bold uppercase tracking-[0.3em] text-center md:text-left leading-relaxed">
-                        <div data-i18n="footer-company">&copy; 2025 PIONEER METAL PRODUCTS FACTORY.</div>
-                        <div data-i18n="footer-rights" class="opacity-60">All Rights Reserved</div>
-                    </div>
-
-                    <!-- Social Links moved under copyright -->
-                    <div class="flex items-center space-x-6 rtl:space-x-reverse">
-                        <a href="javascript:void(0)" aria-label="Facebook"
-                            class="hover:text-white transition-all transform hover:scale-125">
-                            <i class="fab fa-facebook-f text-lg"></i>
-                        </a>
-                        <a href="javascript:void(0)" aria-label="X (Twitter)"
-                            class="hover:text-white transition-all transform hover:scale-125">
-                            <i class="fab fa-x-twitter text-lg"></i>
-                        </a>
-                        <a href="javascript:void(0)" aria-label="Instagram"
-                            class="hover:text-white transition-all transform hover:scale-125">
-                            <i class="fab fa-instagram text-lg"></i>
-                        </a>
-                        <a href="javascript:void(0)" aria-label="LinkedIn"
-                            class="hover:text-white transition-all transform hover:scale-125">
-                            <i class="fab fa-linkedin-in text-lg"></i>
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Visit Count Widget (Right Side) -->
-                <div
-                    class="opacity-90 hover:opacity-100 transition-opacity flex-shrink-0 min-w-[250px] w-full md:w-auto flex justify-center md:justify-end">
-                    <script type='text/javascript' id='mapmyvisitors'
-                        src='https://mapmyvisitors.com/map.js?cl=ffffff&w=a&t=tt&d=txzLrV8mr-0rE56zE39AOX9VT4za8nU7p7K3HwY0eS0'></script>
-                </div>
-            </div>
-        </div>
-    </footer>
-
-    <script>
-        // 初始化地图
-        function initMap() {
-            const mapContainer = document.getElementById('map');
-            if (!mapContainer) return;
-
-            const map = L.map('map', {
-                center: [38.86, 116.48],
-                zoom: 13,
-                scrollWheelZoom: false,
-                zoomControl: false
-            });
-
-            L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
-                attribution: '&copy; CartoDB'
-            }).addTo(map);
-
-            const customIcon = L.divIcon({
-                className: 'custom-marker',
-                html: '<div class="w-4 h-4 bg-red-600 rounded-full border-2 border-white shadow-lg shadow-red-600/50"></div>',
-                iconSize: [16, 16]
-            });
-
-            L.marker([38.86, 116.48], { icon: customIcon }).addTo(map)
-                .bindPopup("<b class='font-bold text-red-600'>PIONEER METAL</b><br><span class='text-xs'>Headquarters & Factory</span>")
-                .openPopup();
-
-            L.control.zoom({ position: 'bottomright' }).addTo(map);
-        }
-
-        window.addEventListener('load', () => {
-            initMap();
-        });
-
-        // Form Handling
-        document.getElementById('contactForm').addEventListener('submit', function (e) {
-            e.preventDefault();
-
-            const name = document.getElementById('formName').value;
-            const email = document.getElementById('formEmail').value;
-            const msg = document.getElementById('formMsg').value;
-
-            // Construct mailto link
-            const subject = encodeURIComponent(`Inquiry from ${name}`);
-            const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\nMessage:\n${msg}`);
-            const mailtoUrl = `mailto:pioneermetal@163.com?subject=${subject}&body=${body}`;
-
-            // Redirect to mail app
-            window.location.href = mailtoUrl;
-
-            // Optional: Show success state visually
-            const btn = this.querySelector('button');
-            const originalContent = btn.innerHTML;
-            btn.innerHTML = '<i class="fas fa-check"></i> <span>REDIRECTING...</span>';
-            btn.classList.replace('bg-red-600', 'bg-green-600');
-
-            setTimeout(() => {
-                btn.innerHTML = originalContent;
-                btn.classList.replace('bg-green-600', 'bg-red-600');
-                this.reset();
-            }, 3000);
-        });
-    </script>
 </body>
-
 </html>

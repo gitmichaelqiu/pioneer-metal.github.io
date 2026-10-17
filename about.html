@@ -1,359 +1,231 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-
 <head>
-    <script>
-        fetch('https://ipapi.co/json/')
-            .then(response => response.json())
-            .then(data => {
-                if (data.country_code == 'CN') {
-                    window.location.href = "/not-found";
-                }
-            })
-    </script>
-
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Us | PIONEER METAL</title>
-
-    <script>
-            (function () {
-                var lang = localStorage.getItem('preferred-lang') || 'en';
-                document.documentElement.lang = lang;
-                document.documentElement.dir = (lang === 'ar') ? 'rtl' : 'ltr';
-                document.documentElement.classList.add('i18n-loading');
-            })();
-    </script>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lipis/flag-icons@7.2.3/css/flag-icons.min.css" />
-
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Pioneer Metal Products Factory. Cold-rolled steel reinforcement, drywall and ceiling sections, and custom fabrication for global partners.">
+    <meta name="theme-color" content="#f4f4f0">
+    <title>Manufacturing at Pioneer | Pioneer Metal</title>
+    <link rel="icon" type="image/png" href="resources/Favicon.png?v=18fe97033b">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&family=Noto+Sans+Arabic:wght@400;700&family=Noto+Sans+JP:wght@400;700&family=Noto+Sans+KR:wght@400;700&display=swap"
-        rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600&family=Manrope:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css?v=d8f22f5583">
+    <script>try{document.documentElement.dataset.theme=localStorage.getItem('theme')||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light')}catch(e){}</script>
+    <script src="translations.js?v=d8f22f5583" defer></script>
+    <script src="main.js?v=d8f22f5583" defer></script>
 
-    <style>
-        /* About Page Specific Styles */
-        .carousel-container {
-            position: relative;
-            width: 100%;
-            overflow: hidden;
-            border-radius: 1rem;
-        }
-
-        .carousel-slide {
-            display: none;
-            opacity: 1;
-            animation: fadeEffect 1s forwards;
-        }
-
-        @keyframes fadeEffect {
-            from {
-                opacity: 0.4;
-            }
-
-            to {
-                opacity: 1;
-            }
-        }
-    </style>
-    <script src="main.js" defer></script>
 </head>
+<body class="about" id="top">
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header">
+ <a aria-label="Pioneer Metal home" class="brand" href="index.html">
+  <img alt="Pioneer Metal, excellence in steel" class="logo-light" data-local="resources/logo.png" height="617" src="https://raw.githubusercontent.com/pioneer-metal/pioneer-metal.github.io/refs/heads/main/resources/logo.png" width="2809"/>
+  <img alt="Pioneer Metal, excellence in steel" class="logo-dark" height="616" src="resources/Logo_White.png" width="2809"/>
+ </a>
+ <nav aria-label="Main navigation" class="site-nav" id="site-nav">
+  <a data-i18n="nav-home" data-page="home" href="index.html">Home</a>
+  <a data-i18n="nav-about" data-page="about" aria-current="page" href="about.html">About</a>
+  <a data-i18n="nav-products" data-page="products" href="products.html">Products</a>
+  <a data-i18n="nav-news" data-page="news" href="news.html">News</a>
+  <a data-i18n="nav-contact" data-page="contact" href="contact.html">Contact</a>
+ </nav>
+ <div class="header-tools">
+  <label class="language">
+   <span class="visually-hidden">
+    Language
+   </span>
+   <select aria-label="Language" id="language">
+    <option value="en">
+     EN
+    </option>
+    <option value="es">
+     ES
+    </option>
+    <option value="pt">
+     PT
+    </option>
+    <option value="ru">
+     RU
+    </option>
+    <option value="ja">
+     JA
+    </option>
+    <option value="ko">
+     KO
+    </option>
+    <option value="ar">
+     AR
+    </option>
+    <option value="fr">
+     FR
+    </option>
+    <option value="sq">
+     SQ
+    </option>
+    <option value="sr">
+     SR
+    </option>
+   </select>
+  </label>
+  <button aria-label="Switch colour theme" class="theme-switch" type="button">
+   <span class="theme-label" data-i18n="dark">Dark</span>
+   <svg aria-hidden="true" class="theme-symbol" height="20" viewbox="0 0 24 24" width="20">
+    <circle cx="12" cy="12" fill="none" r="8" stroke="currentColor" stroke-width="1.6">
+    </circle>
+    <path d="M12 4a8 8 0 0 1 0 16Z" fill="currentColor">
+    </path>
+   </svg>
+  </button>
+  <button aria-controls="site-nav" aria-expanded="false" class="menu-switch" type="button">
+   <span class="menu-label" data-i18n="menu">Menu</span>
+   <svg aria-hidden="true" height="20" viewbox="0 0 24 24" width="20">
+    <path d="M3 7h18M3 12h18M3 17h18" fill="none" stroke="currentColor" stroke-width="1.6">
+    </path>
+   </svg>
+  </button>
+ </div>
+</header>
 
-<body class="bg-white text-slate-900">
+    <main id="main"><section class="split-hero wrap section-space">
+ <div class="split-hero-copy">
+  <h1 class="page-title" data-i18n="story-t" data-reveal="">Manufacturing<br>Power</h1>
+  <p data-i18n="about-subheader" data-reveal="">Steel sections for window, door and drywall systems.</p>
+  <a class="button" data-i18n="btn-partner" href="contact.html">Partner With Us</a>
+ </div>
+ <figure data-reveal="">
+  <img alt="Steel warehouse and overhead crane at Pioneer Metal" class="" data-local="resources/Home_01.jpg" decoding="async" loading="eager" src="https://raw.githubusercontent.com/pioneer-metal/pioneer-metal.github.io/refs/heads/main/resources/Home_01.jpg"/>
+ </figure>
+</section>
+<section class="company-intro section-space wrap">
+ <div class="side-facts" data-reveal="">
+  <p data-i18n="since">Since 2006</p>
+  <p>
+   18+
+   <span data-i18n="stat-exp">Years Experience</span>
+  </p>
+  <p>
+   9,000+
+   <span data-i18n="stat-tons">Annual Tons</span>
+  </p>
+ </div>
+ <div class="intro-body">
+  <h2 data-i18n="about-header" data-reveal="">Our Story</h2>
+  <p class="lead" data-i18n="about-intro" data-reveal="">Pioneer Metal Products Factory supplies high-quality metal sections across China. We specialize in reinforcement steel for uPVC windows and doors, drywall sections, and other profiles.</p>
+  <p data-i18n="story-d1" data-reveal="">Our factory is equipped with advanced automated production lines. We integrate precision engineering with rapid manufacturing to deliver cold-rolled steel solutions that define industry standards.</p>
+  <blockquote data-i18n="about-quote" data-reveal="">Precision is our promise.</blockquote>
+ </div>
+</section>
+<section class="factory-gallery section-space">
+ <div class="showcase-heading wrap">
+  <h2 data-i18n="inside_title" data-reveal="">Inside the factory</h2>
+  <p data-i18n="inside_intro" data-reveal="">Our people, our production lines, and the material we work with.</p>
+ </div>
+ <div class="factory-grid">
+  <figure data-reveal="">
+   <img alt="Pioneer production team at work" class="" data-local="resources/AboutUs_01.jpg" decoding="async" loading="lazy" src="https://raw.githubusercontent.com/pioneer-metal/pioneer-metal.github.io/refs/heads/main/resources/AboutUs_01.jpg"/>
+  </figure>
+  <figure data-reveal="">
+   <img alt="Close view of the steel-forming rollers" class="" data-local="resources/AboutUs_03.jpg" decoding="async" loading="lazy" src="https://raw.githubusercontent.com/pioneer-metal/pioneer-metal.github.io/refs/heads/main/resources/AboutUs_03.jpg"/>
+  </figure>
+  <figure data-reveal="">
+   <img alt="Machinery shaping a steel profile" class="" data-local="resources/AboutUs_04.jpg" decoding="async" loading="lazy" src="https://raw.githubusercontent.com/pioneer-metal/pioneer-metal.github.io/refs/heads/main/resources/AboutUs_04.jpg"/>
+  </figure>
+  <figure data-reveal="">
+   <img alt="Packed profiles loaded for delivery" class="" data-local="resources/AboutUs_02.jpg" decoding="async" loading="lazy" src="https://raw.githubusercontent.com/pioneer-metal/pioneer-metal.github.io/refs/heads/main/resources/AboutUs_02.jpg"/>
+  </figure>
+ </div>
+</section>
+<section class="capacity section-space wrap">
+ <div class="capacity-copy">
+  <h2 data-i18n="scale" data-reveal="">Built for scale</h2>
+  <dl class="figure-list">
+   <div data-reveal="">
+    <dt>
+     9,000+
+    </dt>
+    <dd>
+     <span data-i18n="stat-tons">Annual Tons</span>
+     <p data-i18n="stat-tons-d">Massive global supply capacity ensures zero downtime for partner projects.</p>
+    </dd>
+   </div>
+   <div data-reveal="">
+    <dt>
+     280+
+    </dt>
+    <dd>
+     <span data-i18n="stat-customers-t">Customers</span>
+     <p data-i18n="stat-customers-d">Pioneer Metal serves 280+ customers all over the world with uncompromising quality.</p>
+    </dd>
+   </div>
+   <div data-reveal="">
+    <dt>
+     24+
+    </dt>
+    <dd>
+     <span data-i18n="stat-countries-t">Countries</span>
+     <p data-i18n="stat-countries-d">Travelled to 30+ countries, successfully exporting to 24+ nations globally.</p>
+    </dd>
+   </div>
+  </dl>
+ </div>
+ <figure class="capacity-image" data-reveal="">
+  <img alt="A loaded container leaving Pioneer Metal for shipment" class="" data-local="resources/AboutUs_02.jpg" decoding="async" loading="lazy" src="https://raw.githubusercontent.com/pioneer-metal/pioneer-metal.github.io/refs/heads/main/resources/AboutUs_02.jpg"/>
+  <figcaption data-i18n="shipment_caption">Manufactured here. Supplied worldwide.</figcaption>
+ </figure>
+</section>
+<section class="partnerships section-space wrap">
+ <h2 data-i18n="coop-title" data-reveal="">Business<br>Cooperation</h2>
+ <p class="partnership-intro" data-i18n="coop-desc" data-reveal="">Collaborating with leading enterprises globally to provide tailored OEM solutions, superior logistics, and high-resilience sealing integration.</p>
+ <div class="partner-list">
+  <article data-reveal="">
+   <h3 class="" data-i18n="pillar-1-title" data-reveal="">Lijialong Sealing Strip</h3>
+   <p class="" data-i18n="pillar-1-desc" data-reveal="">Specialized manufacturer of high-resilience weather strips for advanced sealing solutions.</p>
+  </article>
+  <article data-reveal="">
+   <h3 class="" data-i18n="pillar-2-title" data-reveal="">OEM &amp; Custom</h3>
+   <p class="" data-i18n="pillar-2-desc" data-reveal="">OEM customers assist us in achieving success, improving product quality, and achieving a win-win situation.</p>
+  </article>
+  <article data-reveal="">
+   <h3 class="" data-i18n="pillar-3-title" data-reveal="">Melan Trade</h3>
+   <p class="" data-i18n="pillar-3-desc" data-reveal="">Professional import &amp; export services ensuring efficient global logistics and commerce.</p>
+  </article>
+ </div>
+ <a class="text-link" data-i18n="btn-partner" href="contact.html">Partner With Us</a>
+</section>
+<a class="inquiry-band" href="contact.html">
+ <span class="inquiry-word" data-i18n="inquire" data-reveal="">Inquire</span>
+ <span data-i18n="inquiry_prompt">Bring your next project to Pioneer.</span>
+ <span aria-hidden="true" class="cta-arrow">
+  ↗
+ </span>
+</a>
+</main>
+    <footer class="site-footer">
+ <div class="footer-top">
+  <h2 class="footer-invitation" data-i18n="footer_invite" data-reveal="">Let's make<br>your next profile.</h2>
+  <div class="footer-contact" data-reveal="">
+   <a href="mailto:pioneermetal@163.com">
+    pioneermetal@163.com
+   </a>
+   <a href="tel:+8613656714278">
+    +86 136 5671 4278
+   </a>
+   <a href="https://wa.me/8613656714278" rel="noopener" target="_blank">
+    WhatsApp
+   </a>
+   <a data-i18n="nav-news" href="news.html">News</a>
+  </div>
+ </div>
+ <div class="footer-legal">
+  <p data-i18n="footer-company">© 2025 Pioneer Metal Products Factory.</p>
+  <p data-i18n="footer-rights">All Rights Reserved</p>
+  <a data-i18n="back_top" href="#top">Back to top</a>
+ </div>
+ <p aria-hidden="true" class="footer-monument">
+  PIONEER
+ </p>
+</footer>
 
-    <nav class="fixed w-full z-50 bg-white/90 backdrop-blur-md border-b border-gray-100 shadow-sm">
-        <div class="max-w-7xl mx-auto px-6 lg:px-12 flex justify-between items-center h-20">
-            <a href="index.html" class="flex items-center group">
-                <img src="https://raw.githubusercontent.com/pioneer-metal/pioneer-metal.github.io/refs/heads/main/resources/logo.png"
-                    alt="Pioneer Metal Logo" class="h-12 w-auto transition-transform group-hover:scale-105">
-            </a>
-
-            <div
-                class="hidden md:flex items-center space-x-10 text-sm font-bold uppercase tracking-wider text-gray-600">
-                <a href="index.html" class="nav-link hover:text-red-600 transition-colors" data-i18n="nav-home">Home</a>
-                <a href="about.html" class="nav-link text-red-600" data-i18n="nav-about">About</a>
-                <a href="products.html" class="nav-link hover:text-red-600 transition-colors"
-                    data-i18n="nav-products">Products</a>
-                <a href="news.html" class="nav-link hover:text-red-600 transition-colors" data-i18n="nav-news">News</a>
-                <a href="contact.html" class="nav-link hover:text-red-600 transition-colors"
-                    data-i18n="nav-contact">Contact</a>
-            </div>
-
-            <!-- Language Selector (Custom) -->
-            <div class="relative hidden md:block">
-                <button onclick="toggleLangDropdown(event)" aria-label="Select Language"
-                    class="flex items-center space-x-3 bg-gray-50 hover:bg-gray-100 px-4 py-2.5 rounded-full border border-gray-200 transition-all cursor-pointer">
-                    <div id="currentFlag" class="flex items-center">
-                        <span class="fi fi-us rounded-sm"></span>
-                    </div>
-                    <span id="currentLangLabel" class="text-xs font-bold uppercase tracking-tighter">English</span>
-                    <i class="fa-solid fa-chevron-down text-[10px] text-gray-400 transition-transform duration-300"
-                        id="langChevron"></i>
-                </button>
-                <div id="langDropdown"
-                    class="lang-dropdown overflow-hidden absolute right-0 mt-2 bg-white shadow-xl rounded-xl hidden">
-                    <div class="py-1 max-h-[400px] overflow-y-auto">
-                        <button onclick="changeLanguage('en')"
-                            class="w-full px-4 py-3 text-left text-[11px] font-bold flex items-center space-x-3 hover:bg-red-50 transition-colors"><span
-                                class="fi fi-us"></span><span>ENGLISH</span></button>
-                        <button onclick="changeLanguage('es')"
-                            class="w-full px-4 py-3 text-left text-[11px] font-bold flex items-center space-x-3 hover:bg-red-50 transition-colors"><span
-                                class="fi fi-es"></span><span>ESPAÑOL</span></button>
-                        <button onclick="changeLanguage('pt')"
-                            class="w-full px-4 py-3 text-left text-[11px] font-bold flex items-center space-x-3 hover:bg-red-50 transition-colors"><span
-                                class="fi fi-pt"></span><span>PORTUGUÊS</span></button>
-                        <button onclick="changeLanguage('ru')"
-                            class="w-full px-4 py-3 text-left text-[11px] font-bold flex items-center space-x-3 hover:bg-red-50 transition-colors"><span
-                                class="fi fi-ru"></span><span>РУССКИЙ</span></button>
-                        <button onclick="changeLanguage('ja')"
-                            class="w-full px-4 py-3 text-left text-[11px] font-bold flex items-center space-x-3 hover:bg-red-50 transition-colors"><span
-                                class="fi fi-jp"></span><span>日本語</span></button>
-                        <button onclick="changeLanguage('ko')"
-                            class="w-full px-4 py-3 text-left text-[11px] font-bold flex items-center space-x-3 hover:bg-red-50 transition-colors"><span
-                                class="fi fi-kr"></span><span>한국어</span></button>
-                        <button onclick="changeLanguage('ar')"
-                            class="w-full px-4 py-3 text-left text-[11px] font-bold flex items-center space-x-3 hover:bg-red-50 transition-colors"><span
-                                class="fi fi-sa"></span><span>العربية</span></button>
-                        <button onclick="changeLanguage('fr')"
-                            class="w-full px-4 py-3 text-left text-[11px] font-bold flex items-center space-x-3 hover:bg-red-50 transition-colors"><span
-                                class="fi fi-fr"></span><span>FRANÇAIS</span></button>
-                        <button onclick="changeLanguage('sq')"
-                            class="w-full px-4 py-3 text-left text-[11px] font-bold flex items-center space-x-3 hover:bg-red-50 transition-colors"><span
-                                class="fi fi-al"></span><span>SHQIP</span></button>
-                        <button onclick="changeLanguage('sr')"
-                            class="w-full px-4 py-3 text-left text-[11px] font-bold flex items-center space-x-3 hover:bg-red-50 transition-colors"><span
-                                class="fi fi-rs"></span><span>SRPSKI</span></button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Mobile Menu Button -->
-            <button class="md:hidden text-black text-xl p-2" aria-label="Toggle Mobile Menu"
-                onclick="toggleMobileMenu()">
-                <i class="fas fa-bars"></i>
-            </button>
-        </div>
-
-        <!-- Mobile Menu -->
-        <div id="mobile-menu"
-            class="hidden md:hidden absolute top-20 left-0 w-full bg-white shadow-xl border-t border-slate-100 p-6 flex-col space-y-4">
-            <a href="index.html" class="block text-sm font-bold text-slate-600 hover:text-red-600"
-                data-i18n="nav-home">Home</a>
-            <a href="about.html" class="block text-sm font-bold text-red-600" data-i18n="nav-about">About</a>
-            <a href="products.html" class="block text-sm font-bold text-slate-600 hover:text-red-600"
-                data-i18n="nav-products">Products</a>
-            <a href="news.html" class="block text-sm font-bold text-slate-600 hover:text-red-600"
-                data-i18n="nav-news">News</a>
-            <a href="contact.html" class="block text-sm font-bold text-slate-600 hover:text-red-600"
-                data-i18n="nav-contact">Contact</a>
-
-            <div class="pt-4 border-t border-slate-100">
-                <p class="text-xs font-bold text-slate-400 mb-2 uppercase tracking-widest">Language</p>
-                <div class="flex flex-wrap gap-2">
-                    <button onclick="changeLanguage('en')"
-                        class="px-3 py-1 bg-slate-100 rounded text-xs font-bold hover:bg-red-600 hover:text-white">EN</button>
-                    <button onclick="changeLanguage('es')"
-                        class="px-3 py-1 bg-slate-100 rounded text-xs font-bold hover:bg-red-600 hover:text-white">ES</button>
-                    <button onclick="changeLanguage('pt')"
-                        class="px-3 py-1 bg-slate-100 rounded text-xs font-bold hover:bg-red-600 hover:text-white">PT</button>
-                    <button onclick="changeLanguage('ru')"
-                        class="px-3 py-1 bg-slate-100 rounded text-xs font-bold hover:bg-red-600 hover:text-white">RU</button>
-                    <button onclick="changeLanguage('ja')"
-                        class="px-3 py-1 bg-slate-100 rounded text-xs font-bold hover:bg-red-600 hover:text-white">JA</button>
-                    <button onclick="changeLanguage('ko')"
-                        class="px-3 py-1 bg-slate-100 rounded text-xs font-bold hover:bg-red-600 hover:text-white">KO</button>
-                    <button onclick="changeLanguage('ar')"
-                        class="px-3 py-1 bg-slate-100 rounded text-xs font-bold hover:bg-red-600 hover:text-white">AR</button>
-                    <button onclick="changeLanguage('fr')"
-                        class="px-3 py-1 bg-slate-100 rounded text-xs font-bold hover:bg-red-600 hover:text-white">FR</button>
-                    <button onclick="changeLanguage('sq')"
-                        class="px-3 py-1 bg-slate-100 rounded text-xs font-bold hover:bg-red-600 hover:text-white">SQ</button>
-                    <button onclick="changeLanguage('sr')"
-                        class="px-3 py-1 bg-slate-100 rounded text-xs font-bold hover:bg-red-600 hover:text-white">SR</button>
-                </div>
-            </div>
-        </div>
-    </nav>
-
-    <header class="pt-32 pb-16 bg-white">
-        <div class="max-w-7xl mx-auto px-4">
-            <div class="mb-10 max-w-full rtl:text-right">
-                <h2 class="text-red-600 font-black tracking-[0.3em] uppercase mb-4 text-xs" data-i18n="about-tag">About
-                    Pioneer Metal</h2>
-                <h1 class="text-3xl md:text-6xl font-black uppercase tracking-tighter mb-4 leading-none whitespace-nowrap overflow-hidden text-ellipsis"
-                    data-i18n="about-header">Our Team & Passion</h1>
-                <p class="text-slate-500 text-sm md:text-base font-light leading-relaxed mb-8 max-w-3xl rtl:ml-auto rtl:mr-0"
-                    data-i18n="about-intro">
-                    Pioneer Metal Product Factory is a leading supplier of high-quality metal sections...
-                </p>
-            </div>
-
-            <div class="carousel-container aspect-[21/9] shadow-2xl bg-slate-100">
-                <div class="carousel-slide h-full">
-                    <img src="https://raw.githubusercontent.com/pioneer-metal/pioneer-metal.github.io/refs/heads/main/resources/AboutUs_01.jpg"
-                        class="w-full h-full object-cover transition-all duration-700" alt="Team 1">
-                </div>
-                <div class="carousel-slide h-full">
-                    <img src="https://raw.githubusercontent.com/pioneer-metal/pioneer-metal.github.io/refs/heads/main/resources/AboutUs_02.jpg"
-                        class="w-full h-full object-cover transition-all duration-700" alt="Team 2">
-                </div>
-                <div class="carousel-slide h-full">
-                    <img src="https://raw.githubusercontent.com/pioneer-metal/pioneer-metal.github.io/refs/heads/main/resources/AboutUs_03.jpg"
-                        class="w-full h-full object-cover transition-all duration-700" alt="Team 3">
-                </div>
-                <div class="carousel-slide h-full">
-                    <img src="https://raw.githubusercontent.com/pioneer-metal/pioneer-metal.github.io/refs/heads/main/resources/AboutUs_04.jpg"
-                        class="w-full h-full object-cover transition-all duration-700" alt="Team 4">
-                </div>
-
-                <button onclick="plusSlides(-1)"
-                    class="absolute left-4 rtl:right-4 rtl:left-auto top-1/2 -translate-y-1/2 bg-white/20 hover:bg-white/90 text-black w-10 h-10 rounded-full flex items-center justify-center transition-all backdrop-blur-sm shadow-lg z-10">
-                    <i class="fas fa-chevron-left rtl:hidden"></i><i class="fas fa-chevron-right hidden rtl:block"></i>
-                </button>
-                <button onclick="plusSlides(1)"
-                    class="absolute right-4 rtl:left-4 rtl:right-auto top-1/2 -translate-y-1/2 bg-white/20 hover:bg-white/90 text-black w-10 h-10 rounded-full flex items-center justify-center transition-all backdrop-blur-sm shadow-lg z-10">
-                    <i class="fas fa-chevron-right rtl:hidden"></i><i class="fas fa-chevron-left hidden rtl:block"></i>
-                </button>
-
-                <div class="absolute bottom-6 left-1/2 -translate-x-1/2 flex space-x-2">
-                    <span class="dot w-2 h-2 rounded-full bg-white/30 cursor-pointer transition-all"
-                        onclick="currentSlide(1)"></span>
-                    <span class="dot w-2 h-2 rounded-full bg-white/30 cursor-pointer transition-all"
-                        onclick="currentSlide(2)"></span>
-                    <span class="dot w-2 h-2 rounded-full bg-white/30 cursor-pointer transition-all"
-                        onclick="currentSlide(3)"></span>
-                    <span class="dot w-2 h-2 rounded-full bg-white/30 cursor-pointer transition-all"
-                        onclick="currentSlide(4)"></span>
-                </div>
-            </div>
-        </div>
-    </header>
-
-    <section class="py-20 bg-slate-50">
-        <div class="max-w-4xl mx-auto px-4 text-center">
-            <p class="text-xl md:text-2xl font-light text-slate-600 leading-relaxed italic" data-i18n="about-quote">
-                "Precision is not just a standard, it's our promise."
-            </p>
-        </div>
-    </section>
-
-    <section class="py-20 bg-white">
-        <div class="max-w-7xl mx-auto px-4">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-                <div class="space-y-6 rtl:text-right">
-                    <h3 class="text-3xl font-black uppercase italic tracking-tighter" data-i18n="story-t">Manufacturing
-                        <span class="text-red-600">Power</span>
-                    </h3>
-                    <p class="text-slate-500 text-sm md:text-base leading-relaxed font-light" data-i18n="story-d1">
-                        Our factory is equipped with advanced automated production lines.
-                    </p>
-                    <div class="flex gap-12 pt-4 rtl:justify-end">
-                        <div>
-                            <div class="text-3xl font-black text-slate-900">18+</div>
-                            <div class="text-[10px] font-black text-red-600 uppercase tracking-widest mt-1"
-                                data-i18n="stat-exp">Years Experience</div>
-                        </div>
-                        <div>
-                            <div class="text-3xl font-black text-slate-900">9000t</div>
-                            <div class="text-[10px] font-black text-red-600 uppercase tracking-widest mt-1"
-                                data-i18n="stat-tons">Annual Tons</div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="rounded-2xl overflow-hidden aspect-square lg:aspect-video shadow-xl">
-                    <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=1200"
-                        alt="Workshop" class="w-full h-full object-cover">
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <footer class="bg-black text-slate-500 py-10 border-t border-white/5">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex flex-col md:flex-row justify-between items-center md:items-end gap-10 rtl:text-right">
-                <!-- Left Side: Copyright & Socials -->
-                <div class="flex flex-col items-center md:items-start space-y-6 flex-1 w-full">
-                    <!-- Text Group -->
-                    <div
-                        class="text-[10px] font-bold uppercase tracking-[0.3em] text-center md:text-left leading-relaxed">
-                        <div data-i18n="footer-company">&copy; 2025 PIONEER METAL PRODUCTS FACTORY.</div>
-                        <div data-i18n="footer-rights" class="opacity-60">All Rights Reserved</div>
-                    </div>
-
-                    <!-- Social Links moved under copyright -->
-                    <div class="flex items-center space-x-6 rtl:space-x-reverse">
-                        <a href="javascript:void(0)" aria-label="Facebook"
-                            class="hover:text-white transition-all transform hover:scale-125">
-                            <i class="fab fa-facebook-f text-lg"></i>
-                        </a>
-                        <a href="javascript:void(0)" aria-label="X (Twitter)"
-                            class="hover:text-white transition-all transform hover:scale-125">
-                            <i class="fab fa-x-twitter text-lg"></i>
-                        </a>
-                        <a href="javascript:void(0)" aria-label="Instagram"
-                            class="hover:text-white transition-all transform hover:scale-125">
-                            <i class="fab fa-instagram text-lg"></i>
-                        </a>
-                        <a href="javascript:void(0)" aria-label="LinkedIn"
-                            class="hover:text-white transition-all transform hover:scale-125">
-                            <i class="fab fa-linkedin-in text-lg"></i>
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Visit Count Widget (Right Side) -->
-                <div
-                    class="opacity-90 hover:opacity-100 transition-opacity flex-shrink-0 min-w-[250px] w-full md:w-auto flex justify-center md:justify-end">
-                    <script type='text/javascript' id='mapmyvisitors'
-                        src='https://mapmyvisitors.com/map.js?cl=ffffff&w=a&t=tt&d=txzLrV8mr-0rE56zE39AOX9VT4za8nU7p7K3HwY0eS0'></script>
-                </div>
-            </div>
-        </div>
-    </footer>
-
-    <script>
-        let slideIndex = 1;
-        let slideTimer;
-
-        function showSlides(n) {
-            let i;
-            let slides = document.getElementsByClassName("carousel-slide");
-            let dots = document.getElementsByClassName("dot");
-            if (n > slides.length) { slideIndex = 1 }
-            if (n < 1) { slideIndex = slides.length }
-            for (i = 0; i < slides.length; i++) {
-                slides[i].style.display = "none";
-            }
-            for (i = 0; i < dots.length; i++) {
-                dots[i].classList.remove("bg-red-600");
-                dots[i].classList.add("bg-white/30");
-            }
-            slides[slideIndex - 1].style.display = "block";
-            dots[slideIndex - 1].classList.remove("bg-white/30");
-            dots[slideIndex - 1].classList.add("bg-red-600");
-
-            // Fix: Clear timeout to prevent double jumps when clicking
-            if (slideTimer) clearTimeout(slideTimer);
-            slideTimer = setTimeout(() => plusSlides(1), 5000);
-        }
-
-        function plusSlides(n) {
-            showSlides(slideIndex += n);
-        }
-
-        function currentSlide(n) {
-            showSlides(slideIndex = n);
-        }
-
-        document.addEventListener('DOMContentLoaded', () => {
-            showSlides(slideIndex);
-        });
-    </script>
 </body>
-
 </html>
